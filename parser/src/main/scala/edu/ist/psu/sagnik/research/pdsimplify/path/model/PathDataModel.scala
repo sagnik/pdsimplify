@@ -39,7 +39,7 @@ case class PDLine(startPoint:Point2D.Float,endPoint:Point2D.Float,bb:Rectangle) 
 case class PDCurve(startPoint:Point2D.Float,endPoint:Point2D.Float, controlPoint1:
 Point2D.Float, controlPoint2: Point2D.Float,bb:Rectangle) extends PDSegment
 
-//case class PDRect(segments:List[PDLine]) extends PDSubPath
+//a PDShape is a subpath actually
 case class PDShape(segments:List[PDSegment],fromReCommand:Boolean)
 
 case class PDPath(subPaths:List[PDShape],isClip:Boolean,doPaint:Boolean, windingRule:Int,pathStyle:PathStyle)
