@@ -18,6 +18,10 @@ This will produce five PDFs of the form `<*-page-*>-chars,words,lines,paragraphs
 
 Data models for `text`,`raster` and `path` are explained in respective packages.
 
+###Usage
+---------
+Clone this repo and do `publishLocal`. Put the line `"edu.ist.psu.sagnik.research" %% "pdsimplifyparser" % "0.0.1"` in the `libraryDependencies` variable in your `build.sbt` to pull in the dependency. 
+  
 ###TODO
 ------------
 
