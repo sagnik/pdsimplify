@@ -7,7 +7,7 @@ version in ThisBuild := {
   s"$major.$minor.$patch"
 }
 
-scalaVersion := "2.11.7"
+scalaVersion in ThisBuild := "2.11.8"
 
 javacOptions += "-Xlint:unchecked"
 
@@ -18,21 +18,20 @@ name := "pdsimplify"
 lazy val root = project
   .in(file("."))
   .aggregate(
-    parser, 
+    pdsimplifyparser, 
     writers
  )
   .settings(publishArtifact := false)
 
-lazy val parser = project
-  .in(file("parser"))
+lazy val pdsimplifyparser = project
+  .in(file("pdsimplifyparser"))
   .settings(publishArtifact := true)
 
 lazy val writers = project
   .in(file("writers"))
-  .dependsOn(parser)
+  .dependsOn(pdsimplifyparser)
   .settings(publishArtifact := false)
 
 lazy val subprojects: Seq[ProjectReference] = root.aggregate
 lazy val publishTasks = subprojects.map{ r => publish.in(r) }
-
 

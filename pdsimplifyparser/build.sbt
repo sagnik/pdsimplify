@@ -1,6 +1,6 @@
 organization := "edu.ist.psu.sagnik.research"
 
-name := "parser"
+name := "pdsimplifyparser"
 
 resolvers ++= Seq(
   "Sonatype Releases" at "https://oss.sonatype.org/content/repositories/releases/",
