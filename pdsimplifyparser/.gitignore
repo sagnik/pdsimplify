@@ -6,7 +6,6 @@ src/test/resources/pdfs
 *.class
 *.log
 *.swp
-project/
 .idea*
 HERE*
 LOG*
