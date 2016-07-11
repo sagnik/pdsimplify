@@ -1,6 +1,6 @@
-package edu.ist.psu.sagnik.research.pdwriters.writers.svg
+package edu.psu.sagnik.research.pdwriters.writers.svg
 
-import edu.ist.psu.sagnik.research.pdsimplify.path.model._
+import edu.psu.sagnik.research.pdsimplify.path.model._
 
 /**
   * Created by schoudhury on 6/30/16.

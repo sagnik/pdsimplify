@@ -1,9 +1,9 @@
-package edu.ist.psu.sagnik.research.pdsimplify.path.impl
+package edu.psu.sagnik.research.pdsimplify.path.impl
 
 import java.awt.geom.{Area, Point2D}
 import java.io.IOException
 
-import edu.ist.psu.sagnik.research.pdsimplify.path.model._
+import edu.psu.sagnik.research.pdsimplify.path.model._
 import org.apache.pdfbox.contentstream.PDFGraphicsStreamEngine
 import org.apache.pdfbox.cos.COSName
 import org.apache.pdfbox.pdmodel.PDPage

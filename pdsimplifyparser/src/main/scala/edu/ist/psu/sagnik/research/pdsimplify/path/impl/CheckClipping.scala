@@ -1,10 +1,10 @@
-package edu.ist.psu.sagnik.research.pdsimplify.path.impl
+package edu.psu.sagnik.research.pdsimplify.path.impl
 
 import java.awt.geom.Rectangle2D.Float
 import java.awt.geom.{Rectangle2D, Area}
 
-import edu.ist.psu.sagnik.research.pdsimplify.model.Rectangle
-import edu.ist.psu.sagnik.research.pdsimplify.path.model.PDPath
+import edu.psu.sagnik.research.pdsimplify.model.Rectangle
+import edu.psu.sagnik.research.pdsimplify.path.model.PDPath
 
 /**
  * Created by sagnik on 6/28/16.

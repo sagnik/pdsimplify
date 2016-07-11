@@ -1,6 +1,6 @@
-package edu.ist.psu.sagnik.research.pdsimplify.path.impl
+package edu.psu.sagnik.research.pdsimplify.path.impl
 
-import edu.ist.psu.sagnik.research.pdsimplify.path.model.PathStyle
+import edu.psu.sagnik.research.pdsimplify.path.model.PathStyle
 import org.apache.pdfbox.pdmodel.graphics.color.PDColor
 import org.apache.pdfbox.pdmodel.graphics.state.PDGraphicsState
 

@@ -1,8 +1,8 @@
-package edu.ist.psu.sagnik.research.pdsimplify.path.model
+package edu.psu.sagnik.research.pdsimplify.path.model
 
 import java.awt.geom.Point2D
 
-import edu.ist.psu.sagnik.research.pdsimplify.model.Rectangle
+import edu.psu.sagnik.research.pdsimplify.model.Rectangle
 import org.apache.pdfbox.util.Matrix
 
 /**

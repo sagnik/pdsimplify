@@ -1,4 +1,4 @@
-package edu.ist.psu.sagnik.research.pdsimplify.model
+package edu.psu.sagnik.research.pdsimplify.model
 
 /**
   * Created by schoudhury on 6/14/16.

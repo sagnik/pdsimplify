@@ -1,14 +1,14 @@
-package edu.ist.psu.sagnik.research.pdwriters.impl
+package edu.psu.sagnik.research.pdwriters.impl
 
 import java.awt.Color
 import java.io.File
 
-import edu.ist.psu.sagnik.research.pdsimplify.model.Rectangle
-import edu.ist.psu.sagnik.research.pdsimplify.path.impl.ProcessPaths
-import edu.ist.psu.sagnik.research.pdsimplify.raster.impl.ProcessRaster
-import edu.ist.psu.sagnik.research.pdsimplify.text.impl.ProcessText
-import edu.ist.psu.sagnik.research.pdwriters.writers.pdf.CreateMarkedPDF
-import edu.ist.psu.sagnik.research.pdwriters.writers.svg.CreateSVG
+import edu.psu.sagnik.research.pdsimplify.model.Rectangle
+import edu.psu.sagnik.research.pdsimplify.path.impl.ProcessPaths
+import edu.psu.sagnik.research.pdsimplify.raster.impl.ProcessRaster
+import edu.psu.sagnik.research.pdsimplify.text.impl.ProcessText
+import edu.psu.sagnik.research.pdwriters.writers.pdf.CreateMarkedPDF
+import edu.psu.sagnik.research.pdwriters.writers.svg.CreateSVG
 import org.apache.pdfbox.pdmodel.PDDocument
 
 import java.util.logging.{ Level, Logger }

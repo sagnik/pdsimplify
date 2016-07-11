@@ -1,8 +1,8 @@
-package edu.ist.psu.sagnik.research.pdsimplify.text.model
+package edu.psu.sagnik.research.pdsimplify.text.model
 
-import edu.ist.psu.sagnik.research.pdsimplify.model.Rectangle
+import edu.psu.sagnik.research.pdsimplify.model.Rectangle
 import org.apache.pdfbox.pdmodel.font.PDFont
-import edu.ist.psu.sagnik.research.pdsimplify.text.impl.CalculateBB
+import edu.psu.sagnik.research.pdsimplify.text.impl.CalculateBB
 import org.apache.pdfbox.util.Matrix
 
 /**

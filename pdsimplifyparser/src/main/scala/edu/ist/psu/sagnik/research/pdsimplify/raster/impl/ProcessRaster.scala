@@ -1,4 +1,4 @@
-package edu.ist.psu.sagnik.research.pdsimplify.raster.impl
+package edu.psu.sagnik.research.pdsimplify.raster.impl
 
 import java.awt.geom.Point2D
 import java.awt.image.BufferedImage
@@ -6,8 +6,8 @@ import java.io.{ByteArrayOutputStream, IOException}
 import javax.imageio.ImageIO
 import javax.xml.bind.DatatypeConverter
 
-import edu.ist.psu.sagnik.research.pdsimplify.model.Rectangle
-import edu.ist.psu.sagnik.research.pdsimplify.raster.model.PDRasterImage
+import edu.psu.sagnik.research.pdsimplify.model.Rectangle
+import edu.psu.sagnik.research.pdsimplify.raster.model.PDRasterImage
 import org.apache.pdfbox.contentstream.PDFGraphicsStreamEngine
 import org.apache.pdfbox.cos.COSName
 import org.apache.pdfbox.pdmodel.PDPage

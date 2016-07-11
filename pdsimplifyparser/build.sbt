@@ -1,4 +1,4 @@
-organization := "edu.ist.psu.sagnik.research"
+organization := "edu.psu.sagnik.research"
 
 name := "pdsimplifyparser"
 

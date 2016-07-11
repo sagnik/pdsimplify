@@ -1,11 +1,11 @@
-package edu.ist.psu.sagnik.research.pdsimplify.impl
+package edu.psu.sagnik.research.pdsimplify.impl
 
 import java.io.File
 
-import edu.ist.psu.sagnik.research.pdsimplify.model.{PDDocumentSimple, PDPageSimple, Rectangle}
-import edu.ist.psu.sagnik.research.pdsimplify.path.impl.ProcessPaths
-import edu.ist.psu.sagnik.research.pdsimplify.raster.impl.ProcessRaster
-import edu.ist.psu.sagnik.research.pdsimplify.text.impl.ProcessText
+import edu.psu.sagnik.research.pdsimplify.model.{PDDocumentSimple, PDPageSimple, Rectangle}
+import edu.psu.sagnik.research.pdsimplify.path.impl.ProcessPaths
+import edu.psu.sagnik.research.pdsimplify.raster.impl.ProcessRaster
+import edu.psu.sagnik.research.pdsimplify.text.impl.ProcessText
 import org.apache.pdfbox.pdmodel.{PDDocument, PDPage}
 
 /**

@@ -1,10 +1,10 @@
-package edu.ist.psu.sagnik.research.pdwriters.writers.json
+package edu.psu.sagnik.research.pdwriters.writers.json
 
 import java.awt.geom.Point2D
 
-import edu.ist.psu.sagnik.research.pdsimplify.model.PDDocumentSimple
-import edu.ist.psu.sagnik.research.pdsimplify.model.Rectangle
-import edu.ist.psu.sagnik.research.pdsimplify.path.model.PDLine
+import edu.psu.sagnik.research.pdsimplify.model.PDDocumentSimple
+import edu.psu.sagnik.research.pdsimplify.model.Rectangle
+import edu.psu.sagnik.research.pdsimplify.path.model.PDLine
 import org.json4s.JsonDSL._
 import org.json4s.JsonDSL._
 import org.json4s.jackson.JsonMethods._

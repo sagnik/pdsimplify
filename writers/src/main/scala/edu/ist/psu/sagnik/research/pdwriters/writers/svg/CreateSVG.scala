@@ -1,9 +1,9 @@
-package edu.ist.psu.sagnik.research.pdwriters.writers.svg
+package edu.psu.sagnik.research.pdwriters.writers.svg
 
 import java.util.logging.{Level, Logger}
 
-import edu.ist.psu.sagnik.research.pdsimplify.path.model._
-import edu.ist.psu.sagnik.research.pdsimplify.text.model.PDChar
+import edu.psu.sagnik.research.pdsimplify.path.model._
+import edu.psu.sagnik.research.pdsimplify.text.model.PDChar
 
 import scala.reflect.io.File
 

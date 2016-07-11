@@ -1,9 +1,9 @@
-package edu.ist.psu.sagnik.research.pdwriters.writers.pdf
+package edu.psu.sagnik.research.pdwriters.writers.pdf
 
 import java.awt.Color
 import java.io.IOException
 
-import edu.ist.psu.sagnik.research.pdsimplify.model.Rectangle
+import edu.psu.sagnik.research.pdsimplify.model.Rectangle
 import org.apache.pdfbox.pdmodel.{PDDocument, PDPage, PDPageContentStream}
 
 /**

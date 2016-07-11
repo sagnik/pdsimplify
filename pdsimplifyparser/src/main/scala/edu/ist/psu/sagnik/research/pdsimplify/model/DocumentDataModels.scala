@@ -1,8 +1,8 @@
-package edu.ist.psu.sagnik.research.pdsimplify.model
+package edu.psu.sagnik.research.pdsimplify.model
 
-import edu.ist.psu.sagnik.research.pdsimplify.path.model.PDPath
-import edu.ist.psu.sagnik.research.pdsimplify.raster.model.PDRasterImage
-import edu.ist.psu.sagnik.research.pdsimplify.text.model.PDParagraph
+import edu.psu.sagnik.research.pdsimplify.path.model.PDPath
+import edu.psu.sagnik.research.pdsimplify.raster.model.PDRasterImage
+import edu.psu.sagnik.research.pdsimplify.text.model.PDParagraph
 
 /**
   * Created by schoudhury on 7/1/16.

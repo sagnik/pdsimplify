@@ -1,7 +1,7 @@
-package edu.ist.psu.sagnik.research.pdsimplify.text.impl
+package edu.psu.sagnik.research.pdsimplify.text.impl
 
-import edu.ist.psu.sagnik.research.pdsimplify.model.{Rectangle}
-import edu.ist.psu.sagnik.research.pdsimplify.text.model._
+import edu.psu.sagnik.research.pdsimplify.model.{Rectangle}
+import edu.psu.sagnik.research.pdsimplify.text.model._
 
 /**
   * Created by schoudhury on 6/27/16.

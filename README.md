@@ -20,7 +20,7 @@ A bounding box is a rectangle (`x1,y1,x2,y2`) defined in the `user space` and us
 
 ###Testing
 -----------
-The main class for the purpose of testing is `edu.ist.psu.sagnik.research.pdwriters.impl.ShowResults`. Run it with two arguments: 
+The main class for the purpose of testing is `edu.psu.sagnik.research.pdwriters.impl.ShowResults`. Run it with two arguments: 
 
 1. The location of the PDF file. (default is `src/test/resources/LoremIpsum.pdf`)
   
@@ -31,7 +31,7 @@ This will produce five PDFs of the form `<*-page-*>-chars,words,lines,paragraphs
 
 ###How to Use
 ------------
-Clone this repo and do `publishLocal`. Put the line `"edu.ist.psu.sagnik.research" %% "pdsimplifyparser" % "0.0.1"` in the `libraryDependencies` variable in your `build.sbt` to pull in the dependency. 
+Clone this repo and do `publishLocal`. Put the line `"edu.psu.sagnik.research" %% "pdsimplifyparser" % "0.0.1"` in the `libraryDependencies` variable in your `build.sbt` to pull in the dependency. 
   
 ###TODO
 ------------

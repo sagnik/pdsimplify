@@ -1,9 +1,9 @@
-package edu.ist.psu.sagnik.research.pdsimplify.text.impl
+package edu.psu.sagnik.research.pdsimplify.text.impl
 
 
 import java.awt.geom.{AffineTransform, GeneralPath, Rectangle2D}
 
-import edu.ist.psu.sagnik.research.pdsimplify.model.Rectangle
+import edu.psu.sagnik.research.pdsimplify.model.Rectangle
 import org.apache.pdfbox.pdmodel.PDPage
 import org.apache.pdfbox.pdmodel.common.PDRectangle
 import org.apache.pdfbox.pdmodel.font.{PDCIDFontType2, PDSimpleFont, PDType0Font, _}

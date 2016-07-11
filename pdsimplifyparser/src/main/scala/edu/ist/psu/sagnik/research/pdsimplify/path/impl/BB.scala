@@ -1,8 +1,8 @@
-package edu.ist.psu.sagnik.research.pdsimplify.path.impl
+package edu.psu.sagnik.research.pdsimplify.path.impl
 
 import java.awt.geom.Point2D
 
-import edu.ist.psu.sagnik.research.pdsimplify.model.Rectangle
+import edu.psu.sagnik.research.pdsimplify.model.Rectangle
 import sun.java2d.loops.ProcessPath
 
 /**

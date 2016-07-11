@@ -11,7 +11,7 @@ scalaVersion in ThisBuild := "2.11.8"
 
 javacOptions += "-Xlint:unchecked"
 
-organization := "edu.ist.psu.sagnik.research"
+organization := "edu.psu.sagnik.research"
 
 name := "pdsimplify"
 

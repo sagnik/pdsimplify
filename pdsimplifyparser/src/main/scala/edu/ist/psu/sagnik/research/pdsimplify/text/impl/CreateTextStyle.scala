@@ -1,7 +1,7 @@
-package edu.ist.psu.sagnik.research.pdsimplify.text.impl
+package edu.psu.sagnik.research.pdsimplify.text.impl
 
-import edu.ist.psu.sagnik.research.pdsimplify.path.impl.CreatePathStyle
-import edu.ist.psu.sagnik.research.pdsimplify.text.model.{PDChar, PDCharStyle, PDFontInfo}
+import edu.psu.sagnik.research.pdsimplify.path.impl.CreatePathStyle
+import edu.psu.sagnik.research.pdsimplify.text.model.{PDChar, PDCharStyle, PDFontInfo}
 import org.apache.pdfbox.pdmodel.graphics.state.PDGraphicsState
 import org.apache.pdfbox.text.TextPosition
 
