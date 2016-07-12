@@ -1,3 +1,5 @@
+organization := "edu.psu.sagnik.research"
+
 libraryDependencies ++= Seq(
    //jackson for json
   "org.json4s" %% "json4s-native" % "3.2.11",
