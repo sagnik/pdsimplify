@@ -31,7 +31,8 @@ This will produce five PDFs of the form `<*-page-*>-chars,words,lines,paragraphs
 
 ###How to Use
 ------------
-Clone this repo and do `publishLocal`. Put the line `"edu.psu.sagnik.research" %% "pdsimplifyparser" % "0.0.1"` in the `libraryDependencies` variable in your `build.sbt` to pull in the dependency. 
+Put `"edu.psu.sagnik.research" %% "pdsimplifyparser" % "0.0.1" exclude("javax.jms", "jms") exclude("com.sun.jdmk", "jmxtools") exclude("com.sun.jmx", "jmxri")` 
+in your dependencies and make sure you have `https://oss.sonatype.org/content/repositories/releases/` in your resolvers.   
   
 ###TODO
 ------------
