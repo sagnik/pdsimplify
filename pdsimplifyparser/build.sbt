@@ -10,17 +10,11 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
  // pdf parsing libraries
-  "org.apache.pdfbox"    %  "pdfbox"          %  "2.0.2",
-  "org.apache.pdfbox"    %   "pdfbox-tools"   %  "2.0.2",
+  "org.apache.pdfbox"    %  "pdfbox"          %  "2.0.2" exclude("javax.jms", "jms") exclude("com.sun.jdmk", "jmxtools") exclude("com.sun.jmx", "jmxri"),
+  "org.apache.pdfbox"    %   "pdfbox-tools"   %  "2.0.2" exclude("javax.jms", "jms") exclude("com.sun.jdmk", "jmxtools") exclude("com.sun.jmx", "jmxri"),
  // testing
-  "org.scalatest"        %% "scalatest"  %  "2.2.4",
-  //log4j
-  "log4j" % "log4j" % "1.2.15" excludeAll(
-    ExclusionRule(organization = "com.sun.jdmk"),
-    ExclusionRule(organization = "com.sun.jmx"),
-    ExclusionRule(organization = "javax.jms")
-    )
-  )
+  "org.scalatest"        %% "scalatest"  %  "2.2.4"
+ )
 
 fork := true
 
