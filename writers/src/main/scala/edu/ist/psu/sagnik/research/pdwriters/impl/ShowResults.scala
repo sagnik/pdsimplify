@@ -57,6 +57,7 @@ object ShowResults {
     val words=paragraphs.flatMap(_.tLines).flatMap(_.tWords)
     val lines=paragraphs.flatMap(_.tLines)
 
+    //words.foreach(x=>println(x.content))
     //create SVG here
 
 //    new CreateSVG().apply(

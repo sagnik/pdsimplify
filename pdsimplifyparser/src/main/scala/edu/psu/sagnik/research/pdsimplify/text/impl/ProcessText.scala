@@ -70,6 +70,8 @@ class ProcessText(page:PDPage) extends PDFTextStripper {
         case _ => {logger.warning("a text paragraph is not added because we didn't find bb for a text line"); currentParagraphs}
       }
     }
+
+
     currentTextLines = List.empty[PDTextLine]
   }
 
@@ -96,29 +98,34 @@ class ProcessText(page:PDPage) extends PDFTextStripper {
     else None
   }
 
-
-  /*@Override @throws[IOException]
+  /*
+  @Override @throws[IOException]
   override protected def writeString(s: String, textPositions: util.List[TextPosition]): Unit = {
     //this has to be done because sometimes the writeLine() method is not calling the writeWords() method at all, especially
     //when the string has space characters.
     val tPs=textPositions.asScala.toList
     tPs.foreach(tP=>{
+      println("<"+tP.getUnicode+"/>")
       if (!" ".equals(tP)){
         currentChars=currentChars :+ PDChar(
           content=tP.getUnicode,
-          bb=TextPositionBB.approximate(tP), // we can change it to other functions.
-          font=tP.getFont
+          bb=TextPositionBB.approximate(tP),
+          glyphBB=TextPositionBB.glyphBased(tP,page),
+          CreateTextStyle(tP,getGraphicsState)
         )
       }
-      else
+      else {
         writeWordSeparator()
+      }
     })
   }
-*/
+  */
+
   @Override @throws[IOException]
   override protected def writeString(s: String, textPositions: util.List[TextPosition]): Unit = {
     //this has to be done because sometimes the writeLine() method is not calling the writeWords() method at all, especially
     //when the string has space characters.
+
     val tPss=textPositions.asScala.toList
       .foldLeft(List(List.empty[TextPosition])) {
         (acc, tP) =>
