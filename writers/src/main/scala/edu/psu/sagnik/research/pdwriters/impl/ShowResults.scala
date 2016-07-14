@@ -80,5 +80,7 @@ object ShowResults {
 
     printExtractionResult(pdLoc,pageNum,segments.map(_.bb),Color.ORANGE,"paths")
 
+    document.close()
+
   }
 }
