@@ -14,11 +14,19 @@ import org.apache.pdfbox.text.TextPosition
   */
 object TextPositionBB {
 
-  def approximate(tP:TextPosition)=Rectangle(
+  def pageHeightAdjust(r:Rectangle,page:PDPage)=Rectangle(
+    r.x1,
+    page.getBBox.getHeight-r.y1,
+    r.x2,
+    page.getBBox.getHeight-r.y2
+  )
+
+  def approximate(tP:TextPosition,page:PDPage)=pageHeightAdjust(Rectangle(
     tP.getXDirAdj, // text can be rotated, which will change the x,y coordinates and bounding boxes
     tP.getYDirAdj - tP.getHeightDir,
     tP.getXDirAdj+tP.getWidthDirAdj,
     tP.getYDirAdj//(tP.getYDirAdj - tP.getHeightDir)+tP.getHeightDir
+  ),page
   )
 
   def pageBasedAffineTransforms(pdPage:PDPage):(AffineTransform,AffineTransform)={
@@ -66,12 +74,13 @@ object TextPositionBB {
     }
 
     val s = rotateAT.createTransformedShape(flipAT.createTransformedShape(at.createTransformedShape(rect)))
+    pageHeightAdjust(
     Rectangle(
       s.getBounds2D.getMinX.toFloat,
       s.getBounds2D.getMinY.toFloat,
       s.getBounds2D.getMaxX.toFloat,
       s.getBounds2D.getMaxY.toFloat
-    )
+    ),pdPage)
   }
 
 
@@ -119,12 +128,13 @@ object TextPositionBB {
       None
     else
       Some(
+        pageHeightAdjust(
         Rectangle(
           afterPageTransformation.map(_.getBounds.x).min,
           afterPageTransformation.map(_.getBounds.y).min,
           afterPageTransformation.map(a => a.getBounds.x + a.getBounds.width).max,
           afterPageTransformation.map(a => a.getBounds.y + a.getBounds.height).max
-        )
+        ),page)
       )
 
   }

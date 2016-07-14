@@ -13,9 +13,9 @@ object CalculateBB {
       Some(
         Rectangle(
           texts.map(x=>x.bb.x1).min,
-          texts.map(x=>x.bb.y1).min,
+          texts.map(x=>x.bb.y1).max, //PDF rectangle, y1 > y2.
           texts.map(x=>x.bb.x2).max,
-          texts.map(x=>x.bb.y2).max
+          texts.map(x=>x.bb.y2).min
         )
       )
     else

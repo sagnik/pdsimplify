@@ -40,6 +40,7 @@ class ProcessText(page:PDPage) extends PDFTextStripper {
       }
     }
     currentChars = List.empty[PDChar]
+    super.writeWordSeparator()
   }
 
   @Override @throws[IOException]
@@ -56,10 +57,12 @@ class ProcessText(page:PDPage) extends PDFTextStripper {
       }
     }
     currentWords = List.empty[PDWord]
+    super.writeLineSeparator()
   }
 
   @Override @throws[IOException]
   override protected def writeParagraphEnd(): Unit = {
+    this.writeLineSeparator()
     if (!"".equals(currentTextLines.foldLeft("")((a, b) => a + b.content + " ").trim)) {
       currentParagraphs= CalculateBB(currentTextLines) match {
         case Some(bb)=> currentParagraphs :+ PDParagraph (
@@ -67,19 +70,18 @@ class ProcessText(page:PDPage) extends PDFTextStripper {
           tLines = currentTextLines,
           bb = bb
         )
-        case _ => {logger.warning("a text paragraph is not added because we didn't find bb for a text line"); currentParagraphs}
+        case _ => logger.warning("a text paragraph is not added because we didn't find bb for a text line"); currentParagraphs
       }
     }
-
-
     currentTextLines = List.empty[PDTextLine]
+    super.writeParagraphEnd()
   }
 
   protected def wordFromTextPositions(tPs:List[TextPosition]):Option[PDWord]={
     val chars=tPs.map(x=>
       PDChar(
         content=x.getUnicode,
-        bb=TextPositionBB.approximate(x), // we can change it to other functions. See org.apache.pdfbox.examples.util.DrawPrintTextLocations
+        bb=TextPositionBB.approximate(x,page), // we can change it to other functions. See org.apache.pdfbox.examples.util.DrawPrintTextLocations
         glyphBB=TextPositionBB.glyphBased(x,page),
         style=CreateTextStyle(x,getGraphicsState)
       )
@@ -139,11 +141,12 @@ class ProcessText(page:PDPage) extends PDFTextStripper {
     tPss.last.foreach(x=>currentChars=currentChars :+
       PDChar(
         content=x.getUnicode,
-        bb=TextPositionBB.approximate(x),
+        bb=TextPositionBB.approximate(x,page),
         glyphBB=TextPositionBB.glyphBased(x,page),
         CreateTextStyle(x,getGraphicsState)
       )
     )
+    super.writeString(s)
   }
 
   def stripPage(pdPageNum: Int, document: PDDocument): List[PDParagraph] = {

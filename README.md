@@ -20,7 +20,7 @@ A bounding box is a rectangle (`x1,y1,x2,y2`) defined in the `user space` and us
 
 ###Testing
 -----------
-The main class for the purpose of testing is `edu.psu.sagnik.research.pdwriters.impl.ShowResults`. Run it with two arguments: 
+The main class for the purpose of testing is `edu.psu.sagnik.research.pdwriters.impl.ShowResults` which is in `writers` project. Run it with two arguments: 
 
 1. The location of the PDF file. (default is `src/test/resources/LoremIpsum.pdf`)
   
