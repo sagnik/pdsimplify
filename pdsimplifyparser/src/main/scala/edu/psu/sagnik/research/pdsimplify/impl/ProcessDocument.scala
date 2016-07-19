@@ -22,7 +22,7 @@ object ProcessDocument {
 
     val pathFinder=new ProcessPaths(page)
     pathFinder.getPaths()
-    val pdGraphicsPaths=pathFinder.paths
+    val pdGraphicsPaths=pathFinder.paths.filter(!_.isClip)
 
     PDPageSimple(
       pNum = pNum,
