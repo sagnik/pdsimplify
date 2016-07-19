@@ -31,7 +31,7 @@ This will produce five PDFs of the form `<*-page-*>-chars,words,lines,paragraphs
 
 ###How to Use
 ------------
-Put `"edu.psu.sagnik.research" %% "pdsimplifyparser" % "0.0.1" exclude("javax.jms", "jms") exclude("com.sun.jdmk", "jmxtools") exclude("com.sun.jmx", "jmxri")` 
+Put `"edu.psu.sagnik.research" %% "pdsimplifyparser" % "0.0.2" exclude("javax.jms", "jms") exclude("com.sun.jdmk", "jmxtools") exclude("com.sun.jmx", "jmxri")` 
 in your dependencies and make sure you have `https://oss.sonatype.org/content/repositories/releases/` in your resolvers.   
   
 ###TODO
