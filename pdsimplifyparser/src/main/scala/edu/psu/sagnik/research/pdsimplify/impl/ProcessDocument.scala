@@ -44,12 +44,16 @@ object ProcessDocument {
     fromPage(page,document,pNum)
   }
 
-
   def fromPDLoc(pdLoc:String):List[PDPageSimple]={
     val document = PDDocument.load(new File(pdLoc))
     (0 until document.getNumberOfPages).toList.map(x=>fromPDLocByPage(pdLoc,x))
   }
 
+  def fromPDDoc(document:PDDocument):List[PDPageSimple]=
+    (0 until document.getNumberOfPages).toList.map(x=>fromPage(document.getPage(x),document,x))
+
   def apply(pdLoc:String):PDDocumentSimple=PDDocumentSimple(fromPDLoc(pdLoc))
+
+  def apply(pdDoc:PDDocument):PDDocumentSimple=PDDocumentSimple(fromPDDoc(pdDoc))
 
 }

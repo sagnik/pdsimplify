@@ -3,7 +3,7 @@
 version in ThisBuild := {
   val major = 0
   val minor = 0
-  val patch = 2
+  val patch = 3
   s"$major.$minor.$patch"
 } //changed because of modifications
 
