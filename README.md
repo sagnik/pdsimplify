@@ -26,7 +26,7 @@ The main class for the purpose of testing is `edu.psu.sagnik.research.pdwriters.
   
 2. The page number you want to process. (default is `0`)
  
-This will produce five PNGs of the form `<*-page-*>-chars,words,lines,paragraphs,rasters and paths.pdf` in the directory of the input PDF. These PNGs are marked with rectangles and self explanatory.
+This will produce five PNGs of the form `<*-page-*>-chars,words,lines,paragraphs,rasters and paths.png` in the directory of the input PDF. These PNGs are marked with rectangles and self explanatory.
 
 
 ###How to Use
