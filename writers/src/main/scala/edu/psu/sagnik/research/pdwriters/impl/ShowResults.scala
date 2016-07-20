@@ -4,16 +4,17 @@ import java.awt.Color
 import java.io.File
 
 import edu.psu.sagnik.research.pdsimplify.model.Rectangle
-import edu.psu.sagnik.research.pdsimplify.path.impl.ProcessPaths
-import edu.psu.sagnik.research.pdsimplify.raster.impl.ProcessRaster
-import edu.psu.sagnik.research.pdsimplify.text.impl.ProcessText
-import edu.psu.sagnik.research.pdwriters.writers.pdf.CreateMarkedPDF
-import edu.psu.sagnik.research.pdwriters.writers.svg.CreateSVG
 import org.apache.pdfbox.pdmodel.PDDocument
 import java.util.logging.{Level, Logger}
-import Level.{FINE, INFO}
 
+import edu.psu.sagnik.research.pdsimplify.impl.ProcessDocument
+import edu.psu.sagnik.research.pdsimplify.path.model.PDPath
+import edu.psu.sagnik.research.pdsimplify.raster.model.PDRasterImage
+import edu.psu.sagnik.research.pdsimplify.text.model.PDParagraph
 import edu.psu.sagnik.research.pdwriters.writers.image.CreateMarkedPNG
+
+
+import scala.util.{Failure, Success}
 
 /**
  * Created by schoudhury on 6/27/16.
@@ -41,14 +42,14 @@ object ShowResults {
     val document = PDDocument.load(new File(pdLoc))
     val page = document.getPage(pageNum)
 
-    val paragraphs=new ProcessText(page).stripPage(pageNum,document)
+    val SimplifiedDocument=ProcessDocument(document)
 
-    val imFinder=new ProcessRaster(page)
-    imFinder.getImages()
+    val paragraphs=SimplifiedDocument.pages(pageNum).paragraphs
+    val rasters=SimplifiedDocument.pages(pageNum).rasters
+    val graphicsPaths=SimplifiedDocument.pages(pageNum).gPaths
 
-    val pathFinder=new ProcessPaths(page)
-    pathFinder.getPaths()
-    val segments=pathFinder.paths
+
+    val segments=graphicsPaths
       .filter(x=> x.doPaint)
       .flatMap(x=>x.subPaths)
       .flatMap(x=>x.segments)
@@ -77,7 +78,7 @@ object ShowResults {
 
     printExtractionResult(pdLoc,pageNum,paragraphs.map(_.bb),Color.CYAN,"paragraphs")
 
-    printExtractionResult(pdLoc,pageNum,imFinder.rasterImages.map(_.bb),Color.MAGENTA,"rasters")
+    printExtractionResult(pdLoc,pageNum,rasters.map(_.bb),Color.MAGENTA,"rasters")
 
     printExtractionResult(pdLoc,pageNum,segments.map(_.bb),Color.ORANGE,"paths")
 

@@ -31,7 +31,7 @@ This will produce five PNGs of the form `<*-page-*>-chars,words,lines,paragraphs
 
 ###How to Use
 ------------
-Put `"edu.psu.sagnik.research" %% "pdsimplifyparser" % "<version-number>" exclude("javax.jms", "jms") exclude("com.sun.jdmk", "jmxtools") exclude("com.sun.jmx", "jmxri")` where <version-number> is the latest version number from `Build.sbt`. Current is `0.0.4` (subject to change).
+Put `"edu.psu.sagnik.research" %% "pdsimplifyparser" % "<version-number>" exclude("javax.jms", "jms") exclude("com.sun.jdmk", "jmxtools") exclude("com.sun.jmx", "jmxri")` where <version-number> is the latest version number from `Build.sbt`. Current is `0.0.5` (subject to change).
  
 in your dependencies and make sure you have `https://oss.sonatype.org/content/repositories/releases/` in your resolvers.   
   

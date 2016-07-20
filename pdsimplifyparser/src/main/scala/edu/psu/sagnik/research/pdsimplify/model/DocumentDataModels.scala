@@ -4,6 +4,8 @@ import edu.psu.sagnik.research.pdsimplify.path.model.PDPath
 import edu.psu.sagnik.research.pdsimplify.raster.model.PDRasterImage
 import edu.psu.sagnik.research.pdsimplify.text.model.PDParagraph
 
+import scala.util.Try
+
 /**
   * Created by schoudhury on 7/1/16.
   */

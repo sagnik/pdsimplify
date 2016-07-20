@@ -8,6 +8,8 @@ import edu.psu.sagnik.research.pdsimplify.raster.impl.ProcessRaster
 import edu.psu.sagnik.research.pdsimplify.text.impl.ProcessText
 import org.apache.pdfbox.pdmodel.{PDDocument, PDPage}
 
+import scala.util.Try
+
 /**
   * Created by schoudhury on 7/1/16.
   */
@@ -29,12 +31,14 @@ object ProcessDocument {
       paragraphs=paragraphs,
       gPaths=pdGraphicsPaths,
       rasters=rasters,
-      bb=Rectangle(
-        page.getBBox.getLowerLeftX,
-        page.getBBox.getHeight-page.getBBox.getUpperRightY,
-        page.getBBox.getUpperRightX,
-        page.getBBox.getUpperRightY
-      )
+      bb=
+        Rectangle(
+          page.getBBox.getLowerLeftX,
+          page.getBBox.getHeight-page.getBBox.getUpperRightY,
+          page.getBBox.getUpperRightX,
+          page.getBBox.getUpperRightY
+        )
+
     )
   }
 

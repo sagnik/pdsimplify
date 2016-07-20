@@ -36,7 +36,6 @@ object CreateJSON {
 
   def apply(jsonLoc:String,pDS: PDDocumentSimple)= {
     val jsonContent =
-      (
         "pages" ->
           pDS.pages.map {
             p =>
@@ -94,6 +93,6 @@ object CreateJSON {
                     )
                 )
           }
-        )
+
   }
 }

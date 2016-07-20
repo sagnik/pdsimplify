@@ -100,18 +100,16 @@ class ProcessText(page:PDPage) extends PDFTextStripper {
     else None
   }
 
-  /*
   @Override @throws[IOException]
   override protected def writeString(s: String, textPositions: util.List[TextPosition]): Unit = {
     //this has to be done because sometimes the writeLine() method is not calling the writeWords() method at all, especially
     //when the string has space characters.
     val tPs=textPositions.asScala.toList
     tPs.foreach(tP=>{
-      println("<"+tP.getUnicode+"/>")
       if (!" ".equals(tP)){
         currentChars=currentChars :+ PDChar(
           content=tP.getUnicode,
-          bb=TextPositionBB.approximate(tP),
+          bb=TextPositionBB.approximate(tP,page),
           glyphBB=TextPositionBB.glyphBased(tP,page),
           CreateTextStyle(tP,getGraphicsState)
         )
@@ -121,8 +119,8 @@ class ProcessText(page:PDPage) extends PDFTextStripper {
       }
     })
   }
-  */
 
+/*
   @Override @throws[IOException]
   override protected def writeString(s: String, textPositions: util.List[TextPosition]): Unit = {
     //this has to be done because sometimes the writeLine() method is not calling the writeWords() method at all, especially
@@ -148,6 +146,7 @@ class ProcessText(page:PDPage) extends PDFTextStripper {
     )
     super.writeString(s)
   }
+*/
 
   def stripPage(pdPageNum: Int, document: PDDocument): List[PDParagraph] = {
     setStartPage(pdPageNum + 1);
