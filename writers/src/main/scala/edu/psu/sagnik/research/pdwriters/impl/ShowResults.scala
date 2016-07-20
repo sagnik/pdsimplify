@@ -10,9 +10,10 @@ import edu.psu.sagnik.research.pdsimplify.text.impl.ProcessText
 import edu.psu.sagnik.research.pdwriters.writers.pdf.CreateMarkedPDF
 import edu.psu.sagnik.research.pdwriters.writers.svg.CreateSVG
 import org.apache.pdfbox.pdmodel.PDDocument
+import java.util.logging.{Level, Logger}
+import Level.{FINE, INFO}
 
-import java.util.logging.{ Level, Logger }
-import Level.{ INFO, FINE }
+import edu.psu.sagnik.research.pdwriters.writers.image.CreateMarkedPNG
 
 /**
  * Created by schoudhury on 6/27/16.
@@ -25,7 +26,7 @@ object ShowResults {
   def printExtractionResult(pdLoc:String,pageNum:Int,bbs:List[Rectangle],c:Color,qualifier:String)={
     val document = PDDocument.load(new File(pdLoc))
     val page = document.getPage(pageNum)
-    CreateMarkedPDF(pdLoc,document,pageNum,page,bbs,c,qualifier)
+    CreateMarkedPNG(pdLoc,document,pageNum,page,bbs,c,qualifier)
     logger.fine(s"created ${qualifier.substring(0,qualifier.length-1)} marked PDF")
   }
 
@@ -57,7 +58,7 @@ object ShowResults {
     val words=paragraphs.flatMap(_.tLines).flatMap(_.tWords)
     val lines=paragraphs.flatMap(_.tLines)
 
-    //words.foreach(x=>println(x.content))
+    //words.foreach(x=>println(x.content,x.bb))
     //create SVG here
 
 //    new CreateSVG().apply(

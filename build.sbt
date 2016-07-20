@@ -3,9 +3,9 @@
 version in ThisBuild := {
   val major = 0
   val minor = 0
-  val patch = 3
+  val patch = 4
   s"$major.$minor.$patch"
-} //changed because of modifications
+} //added patch for rasters that we were not getting before. 
 
 scalaVersion in ThisBuild := "2.11.8"
 

@@ -14,7 +14,8 @@ import org.apache.pdfbox.pdmodel.{PDDocument, PDPage, PDPageContentStream}
 object CreateMarkedPDF {
   @throws[IOException]
   private def drawRect(content: PDPageContentStream, color: Color, rect: Rectangle, fill: Boolean) {
-   content.addRect(rect.x1, rect.y1, rect.x2-rect.x1, rect.y2-rect.y1)
+   //println(rect+" : "+color.)
+   content.addRect(rect.x1, rect.y1, rect.x2-rect.x1,rect.y1-rect.y2)
     if (fill) {
       content.setNonStrokingColor(color)
       content.fill()

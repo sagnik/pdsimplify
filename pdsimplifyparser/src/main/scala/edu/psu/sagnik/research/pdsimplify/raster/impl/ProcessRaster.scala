@@ -69,18 +69,15 @@ class ProcessRaster(page:PDPage) extends PDFGraphicsStreamEngine(page:PDPage) {
   }
 
   @Override @throws[IOException]
-  def drawImage(pdImage: PDImage):Unit=pdImage match{
-    case pdImage:PDImageXObject => rasterImages=rasterImages :+ PDRasterImage(
-    image=pdImage.getImage,
+  def drawImage(pdImage: PDImage):Unit=rasterImages=rasterImages :+ PDRasterImage(
+      image=pdImage.getImage,
       imageDataString=DatatypeConverter.printBase64Binary(getByteArray(pdImage.getImage)),
-    bb=Rectangle(
-      getCTM.getTranslateX,
-      getCTM.getTranslateY,
-      getCTM.getTranslateX+getCTM.getScaleX,
-      getCTM.getTranslateY+getCTM.getScaleY
+      bb=Rectangle(
+        getCTM.getTranslateX,
+        getCTM.getTranslateY,
+        getCTM.getTranslateX+getCTM.getScaleX,
+        getCTM.getTranslateY+getCTM.getScaleY
+      )
     )
-    )
-    case _ => {}
-  }
 
 }

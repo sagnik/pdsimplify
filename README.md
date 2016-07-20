@@ -26,12 +26,13 @@ The main class for the purpose of testing is `edu.psu.sagnik.research.pdwriters.
   
 2. The page number you want to process. (default is `0`)
  
-This will produce five PDFs of the form `<*-page-*>-chars,words,lines,paragraphs,rasters and paths.pdf` in the directory of the input PDF. These PDFs are marked with rectangles and self explanatory.
+This will produce five PNGs of the form `<*-page-*>-chars,words,lines,paragraphs,rasters and paths.pdf` in the directory of the input PDF. These PNGs are marked with rectangles and self explanatory.
 
 
 ###How to Use
 ------------
-Put `"edu.psu.sagnik.research" %% "pdsimplifyparser" % "0.0.3" exclude("javax.jms", "jms") exclude("com.sun.jdmk", "jmxtools") exclude("com.sun.jmx", "jmxri")` 
+Put `"edu.psu.sagnik.research" %% "pdsimplifyparser" % "<version-number>" exclude("javax.jms", "jms") exclude("com.sun.jdmk", "jmxtools") exclude("com.sun.jmx", "jmxri")` where <version-number> is the latest version number from `Build.sbt`. Current is `0.0.4` (subject to change).
+ 
 in your dependencies and make sure you have `https://oss.sonatype.org/content/repositories/releases/` in your resolvers.   
   
 ###TODO
