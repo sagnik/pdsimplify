@@ -3,9 +3,9 @@
 version in ThisBuild := {
   val major = 0
   val minor = 0
-  val patch = 5
+  val patch = 6
   s"$major.$minor.$patch"
-} //added some error handling for font information.
+} //small patch.
 
 scalaVersion in ThisBuild := "2.11.8"
 

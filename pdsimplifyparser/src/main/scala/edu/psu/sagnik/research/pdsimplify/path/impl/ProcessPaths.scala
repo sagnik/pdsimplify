@@ -174,8 +174,8 @@ class ProcessPaths(page:PDPage) extends PDFGraphicsStreamEngine(page:PDPage) {
         currentPoint = startPoint
         subPathComplete()
 
-      case _ => logger.warning("A path encountered a close operator before it even started. " +
-        "It will henceforth be known as Rickon Stark Blvd.") //should never reach here
+      case _ => {logger.warning("A path encountered a close operator before it even started. " +
+        "It will henceforth be known as Rickon Stark Blvd.") ; subPathComplete()}//should never reach here}
 
     }
 
