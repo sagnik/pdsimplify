@@ -106,7 +106,7 @@ class ProcessText(page:PDPage) extends PDFTextStripper {
     //when the string has space characters.
     val tPs=textPositions.asScala.toList
     tPs.foreach(tP=>{
-      if (!" ".equals(tP)){
+      if (!"".equals(tP.getUnicode.trim)){
         currentChars=currentChars :+ PDChar(
           content=tP.getUnicode,
           bb=TextPositionBB.approximate(tP,page),
