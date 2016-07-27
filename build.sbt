@@ -3,9 +3,9 @@
 version in ThisBuild := {
   val major = 0
   val minor = 0
-  val patch = 7
+  val patch = 8
   s"$major.$minor.$patch"
-} //small patch.
+} //path fix for rectangles.
 
 scalaVersion in ThisBuild := "2.11.8"
 

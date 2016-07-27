@@ -12,7 +12,7 @@ import edu.psu.sagnik.research.pdsimplify.path.model.PDPath
 import edu.psu.sagnik.research.pdsimplify.raster.model.PDRasterImage
 import edu.psu.sagnik.research.pdsimplify.text.model.PDParagraph
 import edu.psu.sagnik.research.pdwriters.writers.image.CreateMarkedPNG
-
+import edu.psu.sagnik.research.pdwriters.writers.pdf.CreateMarkedPDF
 
 import scala.util.{Failure, Success}
 
@@ -27,13 +27,14 @@ object ShowResults {
   def printExtractionResult(pdLoc:String,pageNum:Int,bbs:List[Rectangle],c:Color,qualifier:String)={
     val document = PDDocument.load(new File(pdLoc))
     val page = document.getPage(pageNum)
-    CreateMarkedPNG(pdLoc,document,pageNum,page,bbs,c,qualifier)
+    CreateMarkedPDF(pdLoc,document,pageNum,page,bbs,c,qualifier)
     logger.fine(s"created ${qualifier.substring(0,qualifier.length-1)} marked PDF")
   }
 
   def main(args:Array[String]):Unit={
-    val DEFAULT_LOC="src/test/resources/LoremIpsum.pdf"
-    val DEFAULT_PAGE_NUM=0
+    //val DEFAULT_LOC="/Users/schoudhury/codes/res-doc-sci/res-app-cmd/src/test/resources/manually_labeled_acroforms_test/f1028.pdf"
+    val DEFAULT_LOC="/Users/schoudhury/hassan/C10-2042.pdf"
+    val DEFAULT_PAGE_NUM=7
 
     val pdLoc=if (args.length >1 ) args(0) else DEFAULT_LOC
     val pageNum=if (args.length ==2 ) args(1).toInt else DEFAULT_PAGE_NUM
@@ -80,7 +81,7 @@ object ShowResults {
 
     printExtractionResult(pdLoc,pageNum,rasters.map(_.bb),Color.MAGENTA,"rasters")
 
-    printExtractionResult(pdLoc,pageNum,segments.map(_.bb),Color.ORANGE,"paths")
+    printExtractionResult(pdLoc,pageNum,segments.map(_.bb),Color.PINK,"paths")
 
     document.close()
 

@@ -16,9 +16,9 @@ object BB {
       val ys=List(p0.y,p1.y)
       Rectangle(
         xs.min,
-        ys.min,
+        ys.max,
         xs.max,
-        ys.max
+        ys.min
       )
     }
 
@@ -27,9 +27,9 @@ object BB {
     val ys=List(start.y,end.y,cp1.y,cp2.y)
     Rectangle(
       xs.min,
-      ys.min,
+      ys.max,
       xs.max,
-      ys.max
+      ys.min
     )
   }
 

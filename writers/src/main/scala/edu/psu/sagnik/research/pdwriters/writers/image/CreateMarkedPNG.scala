@@ -27,7 +27,7 @@ object CreateMarkedPNG {
     val pH=page.getBBox.getHeight
 
     for (bb <- bbs) {
-      //println(bb)
+      //println(s"[$tElemType] $bb")
       g2d.draw(new Rectangle2D.Float(bb.x1,pH-bb.y1, bb.x2-bb.x1,bb.y1-bb.y2))
     }
 

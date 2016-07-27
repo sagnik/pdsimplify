@@ -16,7 +16,7 @@ Data models for `text`,`raster` and `path` are explained in respective packages,
 
 3. An `image` object has the image data as both `BufferedImage` and `String` and the `bounding box`. This is again helpful if you want to convert the PDF page to an SVG.  
 
-A bounding box is a rectangle (`x1,y1,x2,y2`) defined in the `user space` and uses the PDF coordinate system, i.e. the origin is `bottom left`.
+A bounding box is a rectangle (`x1,y1,x2,y2`) defined in the `user space` and uses the PDF coordinate system, i.e. the origin is `bottom left` and `y1>y2`.
 
 ###Testing
 -----------
