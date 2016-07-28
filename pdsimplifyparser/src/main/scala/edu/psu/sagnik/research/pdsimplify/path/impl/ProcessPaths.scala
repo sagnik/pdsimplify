@@ -32,7 +32,11 @@ class ProcessPaths(page:PDPage) extends PDFGraphicsStreamEngine(page:PDPage) {
 
   def getPaths():Unit=processPage(getPage)
 
-  def fp(p:Point2D):Point2D.Float=new Point2D.Float(p.getX.toFloat,p.getY.toFloat)
+  def fp(p:Point2D):Point2D.Float=cropBoxAdjust(new Point2D.Float(p.getX.toFloat,p.getY.toFloat))
+
+  //this will not take care of page rotation. See
+  // http://stackoverflow.com/questions/28093537/in-pdfbox-how-to-change-the-origin-0-0-point-of-a-pdrectangle-object
+  def cropBoxAdjust(p:Point2D.Float) = new Point2D.Float(p.getX.toFloat-page.getCropBox.getLowerLeftX,p.getY.toFloat-page.getCropBox.getLowerLeftY)
 
   //***** path construction operators *********//
 
@@ -79,7 +83,7 @@ class ProcessPaths(page:PDPage) extends PDFGraphicsStreamEngine(page:PDPage) {
 
   @Override @throws[IOException]
   def moveTo(x: Float, y: Float):Unit={
-    currentPoint = new Point2D.Float(x,y)
+    currentPoint = fp(new Point2D.Float(x,y))
     //we will not create a subpath here. Just a path. Because move will actually not do anything other than to
     // start a path and change the current point
     currentPath match{
@@ -107,19 +111,19 @@ class ProcessPaths(page:PDPage) extends PDFGraphicsStreamEngine(page:PDPage) {
       case Some(csp) => currentSubPath = Some(
         csp.copy(
           segments = csp.segments :+
-            PDLine(currentPoint,new Point2D.Float(x,y),BB.Line(currentPoint,new Point2D.Float(x,y)))
+            PDLine(currentPoint,fp(new Point2D.Float(x,y)),BB.Line(currentPoint,fp(new Point2D.Float(x,y))))
         )
       )
       case _ => currentSubPath = Some(//current sub path is empty. We need to start a new PDShape i.e. subpath
         PDShape(
           segments = List(
-            PDLine(currentPoint,new Point2D.Float(x,y),BB.Line(currentPoint,new Point2D.Float(x,y)))
+            PDLine(currentPoint,fp(new Point2D.Float(x,y)),BB.Line(currentPoint,fp(new Point2D.Float(x,y))))
           ),
           fromReCommand = false
         )
       )
     }
-    currentPoint=new Point2D.Float(x,y)
+    currentPoint=fp(new Point2D.Float(x,y))
   }
 
   @Override @throws[IOException]
@@ -130,10 +134,10 @@ class ProcessPaths(page:PDPage) extends PDFGraphicsStreamEngine(page:PDPage) {
           segments = csp.segments :+
             PDCurve(
               startPoint = currentPoint,
-              endPoint = new Point2D.Float(x3,y3),
-              controlPoint1 = new Point2D.Float(x1,y1),
-              controlPoint2 = new Point2D.Float(x2,y2),
-              BB.Curve(currentPoint,new Point2D.Float(x3,y3),new Point2D.Float(x1,y1),new Point2D.Float(x2,y2))
+              endPoint = fp(new Point2D.Float(x3,y3)),
+              controlPoint1 = fp(new Point2D.Float(x1,y1)),
+              controlPoint2 = fp(new Point2D.Float(x2,y2)),
+              BB.Curve(currentPoint,fp(new Point2D.Float(x3,y3)),fp(new Point2D.Float(x1,y1)),fp(new Point2D.Float(x2,y2)))
             )
         )
       )
@@ -142,17 +146,17 @@ class ProcessPaths(page:PDPage) extends PDFGraphicsStreamEngine(page:PDPage) {
           segments = List(
             PDCurve(
               startPoint = currentPoint,
-              endPoint = new Point2D.Float(x3,y3),
-              controlPoint1 = new Point2D.Float(x1,y1),
-              controlPoint2 = new Point2D.Float(x2,y2),
-              BB.Curve(currentPoint,new Point2D.Float(x3,y3),new Point2D.Float(x1,y1),new Point2D.Float(x2,y2))
+              endPoint = fp(new Point2D.Float(x3,y3)),
+              controlPoint1 = fp(new Point2D.Float(x1,y1)),
+              controlPoint2 = fp(new Point2D.Float(x2,y2)),
+              BB.Curve(currentPoint,fp(new Point2D.Float(x3,y3)),fp(new Point2D.Float(x1,y1)),fp(new Point2D.Float(x2,y2)))
             )
           ),
           fromReCommand = false
         )
       )
     }
-    currentPoint=new Point2D.Float(x3,y3)
+    currentPoint=fp(new Point2D.Float(x3,y3))
   }
 
   @Override @throws[IOException]

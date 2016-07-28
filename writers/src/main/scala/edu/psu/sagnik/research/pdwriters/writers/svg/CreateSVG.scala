@@ -12,7 +12,7 @@ import scala.reflect.io.File
  */
 class CreateSVG[A] {
 
-  lazy val logger = Logger.getLogger("ProcessPaths")
+  lazy val logger = Logger.getLogger("pdwriters.writers.svg.CreateSVG")
   logger.setLevel(Level.ALL)
 
 

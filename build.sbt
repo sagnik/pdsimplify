@@ -3,7 +3,7 @@
 version in ThisBuild := {
   val major = 0
   val minor = 0
-  val patch = 8
+  val patch = 9
   s"$major.$minor.$patch"
 } //path fix for rectangles.
 

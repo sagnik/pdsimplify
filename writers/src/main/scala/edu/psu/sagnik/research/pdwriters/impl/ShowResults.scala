@@ -32,9 +32,8 @@ object ShowResults {
   }
 
   def main(args:Array[String]):Unit={
-    //val DEFAULT_LOC="/Users/schoudhury/codes/res-doc-sci/res-app-cmd/src/test/resources/manually_labeled_acroforms_test/f1028.pdf"
     val DEFAULT_LOC="/Users/schoudhury/hassan/C10-2042.pdf"
-    val DEFAULT_PAGE_NUM=7
+    val DEFAULT_PAGE_NUM=0
 
     val pdLoc=if (args.length >1 ) args(0) else DEFAULT_LOC
     val pageNum=if (args.length ==2 ) args(1).toInt else DEFAULT_PAGE_NUM
