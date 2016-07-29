@@ -3,9 +3,9 @@
 version in ThisBuild := {
   val major = 0
   val minor = 0
-  val patch = 9
+  val patch = 10
   s"$major.$minor.$patch"
-} //path fix for rectangles.
+} //cropbox adjustment for rasters.
 
 scalaVersion in ThisBuild := "2.11.8"
 

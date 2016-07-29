@@ -73,8 +73,8 @@ class ProcessRaster(page:PDPage) extends PDFGraphicsStreamEngine(page:PDPage) {
       image=pdImage.getImage,
       imageDataString=DatatypeConverter.printBase64Binary(getByteArray(pdImage.getImage)),
       bb=Rectangle(
-        getCTM.getTranslateX,
-        getCTM.getTranslateY,
+        getCTM.getTranslateX-page.getCropBox.getLowerLeftX,
+        getCTM.getTranslateY-page.getCropBox.getLowerLeftY,
         getCTM.getTranslateX+getCTM.getScaleX,
         getCTM.getTranslateY+getCTM.getScaleY
       )
