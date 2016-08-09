@@ -34,11 +34,10 @@ object ProcessDocument {
       bb=
         Rectangle(
           page.getBBox.getLowerLeftX,
-          page.getBBox.getHeight-page.getBBox.getUpperRightY,
+          page.getBBox.getUpperRightY,
           page.getBBox.getUpperRightX,
-          page.getBBox.getUpperRightY
+          page.getBBox.getLowerLeftY
         )
-
     )
   }
 

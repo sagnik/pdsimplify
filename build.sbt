@@ -3,9 +3,9 @@
 version in ThisBuild := {
   val major = 0
   val minor = 0
-  val patch = 10
+  val patch = 11
   s"$major.$minor.$patch"
-} //cropbox adjustment for rasters.
+} //page size now conforms to our rectangle structure.
 
 scalaVersion in ThisBuild := "2.11.8"
 
