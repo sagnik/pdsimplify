@@ -1,0 +1,10 @@
+{
+  "type": "record",
+  "namespace": "edu.psu.sagnik.research.data",
+  "name": "PageInfo",
+  "doc": "General spacial information about a document page.",
+  "fields": [
+    { "name": "bb",        "type": "edu.psu.sagnik.research.data.RectangleOTL" },
+    { "name": "pageIndex", "type": "int"   }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+    "type": "record",
+    "namespace": "edu.psu.sagnik.research.data.pdftext",
+    "name": "PDChar",
+    "doc:": "Text Character."
+    "fields": [
+      { "name": "content",    "type": "string", "doc": "content for a char comes from a TextPosition object, therefore it can be a string and not a char"  },
+      { "name": "bb",         "type": "edu.psu.sagnik.research.data.RectangleOTL", "doc": "approximate BB, used for creating advanced constructs such as words, lines, paragraphs"  },
+      { "name": "glyphBB",    "type": "[null, edu.psu.sagnik.research.data.Rectangle]", "doc": "the actual bounding box for a character, coming from the glyph" },
+      { "name": "style",      "type": "edu.psu.sagnik.research.data.PDCharStyle"}
+    ]
+}

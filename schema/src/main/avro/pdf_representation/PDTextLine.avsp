@@ -1,0 +1,14 @@
+{
+    "type": "record",
+    "namespace": "edu.psu.sagnik.research.data.pdftext",
+    "name": "PDTextLine",
+    "doc:": "Text Line."
+    "fields": [
+      { "name": "content", "type": "string"},
+      { "name": "bb",      "type": "edu.psu.sagnik.research.data.RectangleOTL"},
+      {
+            "name": "tWords",
+            "type": { "type" : "array", "items": "PDWord" },
+      },
+    ]
+}

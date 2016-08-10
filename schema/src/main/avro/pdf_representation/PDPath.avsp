@@ -1,0 +1,16 @@
+{
+    "type": "record",
+    "namespace": "edu.psu.sagnik.research.data.pdfgraphics",
+    "name": "PDShape",
+    "doc:": "PDF graphics path. Sequence of sub paths. Can be a clipping path and might not be painted. Has an associated PathStyle object from graphics state."
+    "fields": [
+      { "name": "isClip",       "type": "boolean", "doc": "???"},
+      { "name": "doPaint",      "type": "boolean", "doc": "???"},
+      { "name": "windingRule",  "type": "Int", "doc": "???"},
+      { "name": "pathStyle",    "type": "edu.psu.sagnik.research.data.pdfgraphics.PathStyle", "doc": "???"},
+      {
+                  "name": "subPaths",
+                  "type": { "type" : "array", "items": "PDShape" },
+      },
+    ]
+}
