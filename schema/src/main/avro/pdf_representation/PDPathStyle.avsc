@@ -4,16 +4,16 @@
     "name": "PDPathStyle",
     "doc:": "Style element for a PDF path.",
     "fields": [
-      { "name": "fill", "type": [null,"string"]},
-      { "name": "fillRule", "type": [null,"string"]},
-      { "name": "fillOpacity", "type": [null,"string"]},
-      { "name": "stroke", "type": [null,"string"]},
-      { "name": "strokeWidth", "type": [null,"string"]},
-      { "name": "strokeLineCap", "type": [null,"string"]},
-      { "name": "strokeLineJoin", "type": [null,"string"]},
-      { "name": "strokeMiterLimit", "type": [null,"string"]},
-      { "name": "strokeDashArray", "type": [null,"string"]},
-      { "name": "strokeDashOffset", "type": [null,"string"]},
-      { "name": "strokeOpacity", "type": [null,"string"]}
+      { "name": "fill", "type": ["null","string"]},
+      { "name": "fillRule", "type": ["null","string"]},
+      { "name": "fillOpacity", "type": ["null","string"]},
+      { "name": "stroke", "type": ["null","string"]},
+      { "name": "strokeWidth", "type": ["null","string"]},
+      { "name": "strokeLineCap", "type": ["null","string"]},
+      { "name": "strokeLineJoin", "type": ["null","string"]},
+      { "name": "strokeMiterLimit", "type": ["null","string"]},
+      { "name": "strokeDashArray", "type": ["null","string"]},
+      { "name": "strokeDashOffset", "type": ["null","string"]},
+      { "name": "strokeOpacity", "type": ["null","string"]}
     ]
 }

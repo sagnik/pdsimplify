@@ -6,7 +6,7 @@
     "fields": [
       { "name": "xTopLeft",   "type": "float", "doc": "Upper-left x coordinate"  },
       { "name": "yTopLeft",   "type": "float", "doc": "Upper-left y coordinate"  },
-      { "name": "heightDown", "type": "float", "doc": "height (positive real) that grows downward." },
-      { "name": "widthRight", "type": "float", "doc": "width (positive real) that grows rightward." }
+      { "name": "heightDown", "type": "float", "doc": "height (positive real) that grows downward" },
+      { "name": "widthRight", "type": "float", "doc": "width (positive real) that grows rightward" }
     ]
 }

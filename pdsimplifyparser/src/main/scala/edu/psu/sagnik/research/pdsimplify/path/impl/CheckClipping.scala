@@ -1,7 +1,7 @@
 package edu.psu.sagnik.research.pdsimplify.path.impl
 
 import java.awt.geom.Rectangle2D.Float
-import java.awt.geom.{Rectangle2D, Area}
+import java.awt.geom.{ Rectangle2D, Area }
 
 import edu.psu.sagnik.research.pdsimplify.model.Rectangle
 import edu.psu.sagnik.research.pdsimplify.path.model.PDPath
@@ -17,10 +17,9 @@ import edu.psu.sagnik.research.pdsimplify.path.model.PDPath
 //see if a path falls within a clipping area, we are just checking with the
 //bounding box of the whole path. This is really an approximation.
 
-
 object CheckClipping {
 
-  def getPathBB(path:PDPath):Rectangle2D.Float= {
+  def getPathBB(path: PDPath): Rectangle2D.Float = {
     new Rectangle2D.Float(
       path.subPaths.flatMap(_.segments).map(_.bb).map(_.x1).min,
       path.subPaths.flatMap(_.segments).map(_.bb).map(_.y1).min,
@@ -31,8 +30,8 @@ object CheckClipping {
     )
   }
 
-  def inSideClip(currentPath:Option[PDPath],ccp:Area):Boolean=currentPath match{ //ccp=current clipping path
-    case Some(cp) => true//ccp.contains(getPathBB(cp))
+  def inSideClip(currentPath: Option[PDPath], ccp: Area): Boolean = currentPath match { //ccp=current clipping path
+    case Some(cp) => true //ccp.contains(getPathBB(cp))
     case _ => true //this path is none, so doesn't really matter
   }
 

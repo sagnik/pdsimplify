@@ -6,8 +6,8 @@ import edu.psu.sagnik.research.pdsimplify.model.Rectangle
 import org.apache.pdfbox.util.Matrix
 
 /**
-  * Created by schoudhury on 6/15/16.
-  */
+ * Created by schoudhury on 6/15/16.
+ */
 
 /*
 From PDF Spec 1.7, Page 225
@@ -29,33 +29,32 @@ of operators to construct the path, followed by one or more operators to
 paint the path or to use it as a clipping boundary.
  */
 
-trait PDSegment{
-  def startPoint:Point2D.Float
-  def endPoint:Point2D.Float
-  def bb:Rectangle
+trait PDSegment {
+  def startPoint: Point2D.Float
+  def endPoint: Point2D.Float
+  def bb: Rectangle
 }
 
-case class PDLine(startPoint:Point2D.Float,endPoint:Point2D.Float,bb:Rectangle) extends PDSegment
-case class PDCurve(startPoint:Point2D.Float,endPoint:Point2D.Float, controlPoint1:
-Point2D.Float, controlPoint2: Point2D.Float,bb:Rectangle) extends PDSegment
+case class PDLine(startPoint: Point2D.Float, endPoint: Point2D.Float, bb: Rectangle) extends PDSegment
+case class PDCurve(startPoint: Point2D.Float, endPoint: Point2D.Float, controlPoint1: Point2D.Float, controlPoint2: Point2D.Float, bb: Rectangle) extends PDSegment
 
 //a PDShape is a subpath actually
-case class PDShape(segments:List[PDSegment],fromReCommand:Boolean)
+case class PDShape(segments: List[PDSegment], fromReCommand: Boolean)
 
-case class PDPath(subPaths:List[PDShape],isClip:Boolean,doPaint:Boolean, windingRule:Int,pathStyle:PathStyle)
+case class PDPath(subPaths: List[PDShape], isClip: Boolean, doPaint: Boolean, windingRule: Int, pathStyle: PathStyle)
 
 //this comes from the graphics state
 case class PathStyle(
-                      fill:Option[String],
-                      fillRule:Option[String],
-                      fillOpacity:Option[String],
-                      stroke:Option[String],
-                      strokeWidth:Option[String],
-                      strokeLineCap:Option[String],
-                      strokeLineJoin:Option[String],
-                      strokeMiterLimit:Option[String],
-                      strokeDashArray:Option[String],
-                      strokeDashOffset:Option[String],
-                      strokeOpacity:Option[String]
-                    )
+  fill: Option[String],
+  fillRule: Option[String],
+  fillOpacity: Option[String],
+  stroke: Option[String],
+  strokeWidth: Option[String],
+  strokeLineCap: Option[String],
+  strokeLineJoin: Option[String],
+  strokeMiterLimit: Option[String],
+  strokeDashArray: Option[String],
+  strokeDashOffset: Option[String],
+  strokeOpacity: Option[String]
+)
 
