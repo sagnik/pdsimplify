@@ -2,7 +2,7 @@
     "type": "record",
     "namespace": "edu.psu.sagnik.research.data.pdfgraphics",
     "name": "PDPathStyle",
-    "doc:": "Style element for a PDF path."
+    "doc:": "Style element for a PDF path.",
     "fields": [
       { "name": "fill", "type": [null,"string"]},
       { "name": "fillRule", "type": [null,"string"]},
@@ -14,6 +14,6 @@
       { "name": "strokeMiterLimit", "type": [null,"string"]},
       { "name": "strokeDashArray", "type": [null,"string"]},
       { "name": "strokeDashOffset", "type": [null,"string"]},
-      { "name": "strokeOpacity", "type": [null,"string"]},
+      { "name": "strokeOpacity", "type": [null,"string"]}
     ]
 }

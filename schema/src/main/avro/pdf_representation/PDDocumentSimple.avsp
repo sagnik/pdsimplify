@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "namespace": "edu.psu.sagnik.research.data",
+  "name": "PDDocumentSimple",
+  "doc": "A document in simplified representation.",
+  "fields": [
+   {
+       "name": "pages",
+       "type": { "type" : "array", "items": "PDPageSimple" }
+   }
+  ]
+}

@@ -2,12 +2,12 @@
     "type": "record",
     "namespace": "edu.psu.sagnik.research.data.pdfgraphics",
     "name": "PDShape",
-    "doc:": "PDF subpaths that contain Lines and Curves."
+    "doc:": "PDF subpaths that contain Lines and Curves.",
     "fields": [
       { "name": "fromReCommand",  "type": "boolean", "doc": "???"},
       {
                   "name": "segments",
-                  "type": { "type" : "array", "items": ["PDCurve","PDLine"] },
-      },
+                  "type": { "type" : "array", "items": ["PDCurve","PDLine"] }
+      }
     ]
 }

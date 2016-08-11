@@ -2,7 +2,7 @@
     "type": "record",
     "namespace": "edu.psu.sagnik.research.data.pdfgraphics",
     "name": "PDLine",
-    "doc:": "A PDF Graphics Segment that is a Line"
+    "doc:": "A PDF Graphics Segment that is a Line",
     "fields": [
       { "name": "startPoint",  "type": "java.awt.geom.Point2D.Float"},
       { "name": "endPoint",    "type": "java.awt.geom.Point2D.Float"},

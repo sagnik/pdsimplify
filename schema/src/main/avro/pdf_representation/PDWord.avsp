@@ -2,13 +2,13 @@
     "type": "record",
     "namespace": "edu.psu.sagnik.research.data.pdftext",
     "name": "PDWord",
-    "doc:": "Text Word."
+    "doc:": "Text Word.",
     "fields": [
       { "name": "content", "type": "string"},
       { "name": "bb",      "type": "edu.psu.sagnik.research.data.RectangleOTL"},
       {
             "name": "chars",
-            "type": { "type" : "array", "items": "PDChar" },
-      },
+            "type": { "type" : "array", "items": "PDChar" }
+      }
     ]
 }

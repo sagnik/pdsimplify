@@ -9,8 +9,8 @@
       { "name": "windingRule",  "type": "Int", "doc": "???"},
       { "name": "pathStyle",    "type": "edu.psu.sagnik.research.data.pdfgraphics.PathStyle", "doc": "???"},
       {
-                  "name": "subPaths",
-                  "type": { "type" : "array", "items": "PDShape" },
-      },
+          "name": "subPaths",
+          "type": { "type" : "array", "items": "PDShape" }
+      }
     ]
 }

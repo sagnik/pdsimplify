@@ -9,5 +9,5 @@
     { "name": "fillOpacity", "type": "string"},
     { "name": "fillRule",    "type": "string"},
     { "name": "stroke",      "type": "string"},
-    { "name": "rotation",    "type": "float", "doc": "rotation of the character, in degrees"},
+    { "name": "rotation",    "type": "float", "doc": "rotation of the character, in degrees"}
 }

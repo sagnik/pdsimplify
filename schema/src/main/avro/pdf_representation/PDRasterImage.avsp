@@ -2,9 +2,9 @@
     "type": "record",
     "namespace": "edu.psu.sagnik.research.data.pdfraster",
     "name": "PDChar",
-    "doc:": "Raster Image."
+    "doc:": "Raster Image.",
     "fields": [
-      { "name": "imageDataString", "type": "string", "doc": "to produce SVG Images"}
+      { "name": "imageDataString", "type": "string", "doc": "to produce SVG Images"},
       { "name": "bb",              "type": "edu.psu.sagnik.research.data.RectangleOTL"}
     ]
 }

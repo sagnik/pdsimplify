@@ -1,0 +1,22 @@
+{
+  "type": "record",
+  "namespace": "edu.psu.sagnik.research.data",
+  "name": "PDPageSimple",
+  "doc": "A document page.",
+  "fields": [
+   { "name": "pageInfo",      "type": "edu.psu.sagnik.research.data.PDPageInfo"},
+   {
+       "name": "paragraphs",
+       "type": { "type" : "array", "items": "PDParagraph" }
+   },
+   {
+       "name": "gPaths",
+       "type": { "type" : "array", "items": "PDPath" }
+   },
+   {
+       "name": "rasters",
+       "type": { "type" : "array", "items": "PDRasterImage" }
+   }
+
+  ]
+}
