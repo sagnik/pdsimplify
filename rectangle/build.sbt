@@ -7,7 +7,7 @@ lazy val scalaMacros = "org.scalamacros" % "paradise" % "2.1.0" cross CrossVersi
 addCompilerPlugin(scalaMacros)
 
 lazy val nitroOss = "com.gonitro"
-lazy val avroCodegen = nitroOss          %% "avro-codegen-runtime" % "0.3.5"
+lazy val avroCodegen = nitroOss          %% "avro-codegen-runtime" % "0.3.4"
 lazy val shapeless   = "com.chuusai" %% "shapeless"            % "2.2.5"
 
 libraryDependencies ++= Seq(

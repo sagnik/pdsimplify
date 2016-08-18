@@ -18,19 +18,19 @@ name := "pdsimplify"
 lazy val root = project
   .in(file("."))
   .aggregate(
-    schema,
+    rectangle,
     pdsimplifyparser,
     writers
  )
   .settings(publishArtifact := false)
 
-lazy val schema = project
-  .in(file("schema"))
+lazy val rectangle = project
+  .in(file("rectangle"))
   .settings(publishArtifact := false)
 
 lazy val pdsimplifyparser = project
   .in(file("pdsimplifyparser"))
-  .dependsOn(schema)
+  .dependsOn(rectangle)
   .settings(publishArtifact := true)
 
 lazy val writers = project

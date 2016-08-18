@@ -1,5 +1,6 @@
 package edu.psu.sagnik.research.pdsimplify.model
 
+import edu.psu.sagnik.research.data.RectangleOTL
 import edu.psu.sagnik.research.pdsimplify.path.model.PDPath
 import edu.psu.sagnik.research.pdsimplify.raster.model.PDRasterImage
 import edu.psu.sagnik.research.pdsimplify.text.model.PDParagraph
@@ -15,7 +16,7 @@ case class PDPageSimple(
   paragraphs: List[PDParagraph],
   gPaths: List[PDPath],
   rasters: List[PDRasterImage],
-  bb: Rectangle
+  bb: RectangleOTL
 )
 
 case class PDDocumentSimple(pages: List[PDPageSimple])

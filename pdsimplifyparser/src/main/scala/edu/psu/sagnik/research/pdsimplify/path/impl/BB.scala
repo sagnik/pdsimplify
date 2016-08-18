@@ -10,7 +10,6 @@ import sun.java2d.loops.ProcessPath
  */
 
 object BB {
-
   def Line(p0: Point2D.Float, p1: Point2D.Float) = {
     val xs = List(p0.x, p1.x)
     val ys = List(p0.y, p1.y)
