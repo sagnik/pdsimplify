@@ -71,6 +71,8 @@ object ShowResults {
 //    )
 //    logger.info("created char SVG")
 
+
+
     printExtractionResult(pdLoc,pageNum,chars.map(_.bb),Color.BLUE,"chars")
 
     printExtractionResult(pdLoc,pageNum,words.map(_.bb),Color.GREEN,"words")

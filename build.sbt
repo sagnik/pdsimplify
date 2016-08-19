@@ -3,9 +3,9 @@
 version in ThisBuild := {
   val major = 0
   val minor = 0
-  val patch = 11
+  val patch = 12
   s"$major.$minor.$patch"
-} //page size now conforms to our rectangle structure.
+} //fixed timing due to raster image
 
 scalaVersion in ThisBuild := "2.11.8"
 
