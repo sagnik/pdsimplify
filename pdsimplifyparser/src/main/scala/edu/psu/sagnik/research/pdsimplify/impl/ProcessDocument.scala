@@ -28,31 +28,30 @@ object ProcessDocument {
 
   def fromPage(page:PDPage,document:PDDocument,pNum:Int):PDPageSimple={
 
-    val pageNum=s"[page]${pNum}"
-    val paragraphs=time{new ProcessText(page).stripPage(pNum,document)}{s"$pageNum text"}
+      val paragraphs = new ProcessText(page).stripPage(pNum, document)
 
-    //TODO: getting raster images was too expensive, and we are not using it anyway, so why bother.
-    //val imFinder=new ProcessRaster(page)
-    //time{imFinder.getImages()}{s"$pageNum rasters"}
-    val rasters= List.empty[PDRasterImage] //imFinder.rasterImages
+      //TODO: getting raster images was too expensive, and we are not using it anyway, so why bother.
+      //val imFinder = new ProcessRaster(page)
+      //imFinder.getImages()
+      val rasters = List.empty[PDRasterImage] //imFinder.rasterImages
 
-    val pathFinder=new ProcessPaths(page)
-    time{pathFinder.getPaths()}{s"$pageNum graphics paths"}
-    val pdGraphicsPaths=pathFinder.paths.filter(!_.isClip)
+      val pathFinder = new ProcessPaths(page)
+      pathFinder.getPaths()
+      val pdGraphicsPaths = pathFinder.paths.filter(!_.isClip)
 
-    PDPageSimple(
-      pNum = pNum,
-      paragraphs=paragraphs,
-      gPaths=pdGraphicsPaths,
-      rasters=rasters,
-      bb=
-        Rectangle(
-          page.getBBox.getLowerLeftX,
-          page.getBBox.getUpperRightY,
-          page.getBBox.getUpperRightX,
-          page.getBBox.getLowerLeftY
-        )
-    )
+      PDPageSimple(
+        pNum = pNum,
+        paragraphs = paragraphs,
+        gPaths = pdGraphicsPaths,
+        rasters = rasters,
+        bb =
+          Rectangle(
+            page.getBBox.getLowerLeftX,
+            page.getBBox.getUpperRightY,
+            page.getBBox.getUpperRightX,
+            page.getBBox.getLowerLeftY
+          )
+      )
   }
 
   def fromPDLocByPage(pdLoc:String,pNum:Int):PDPageSimple={
@@ -67,7 +66,7 @@ object ProcessDocument {
   }
 
   def fromPDDoc(document:PDDocument):List[PDPageSimple]=
-    (0 until document.getNumberOfPages).toList.map(x=>time{fromPage(document.getPage(x),document,x)}{s"[page] $x [total]"})
+    (0 until document.getNumberOfPages).toList.map(x=>fromPage(document.getPage(x),document,x))
 
   def apply(pdLoc:String):PDDocumentSimple=PDDocumentSimple(fromPDLoc(pdLoc))
 
