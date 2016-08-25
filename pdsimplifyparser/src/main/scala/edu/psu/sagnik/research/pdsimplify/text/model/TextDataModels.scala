@@ -1,9 +1,6 @@
 package edu.psu.sagnik.research.pdsimplify.text.model
 
-import edu.psu.sagnik.research.pdsimplify.model.Rectangle
-import org.apache.pdfbox.pdmodel.font.PDFont
-import edu.psu.sagnik.research.pdsimplify.text.impl.CalculateBB
-import org.apache.pdfbox.util.Matrix
+import edu.psu.sagnik.research.data.RectangleOTL
 
 /**
  * Created by schoudhury on 6/27/16.
@@ -14,7 +11,7 @@ import org.apache.pdfbox.util.Matrix
 
 sealed trait TextSegment {
   def content: String
-  def bb: Rectangle
+  def bb: RectangleOTL
 }
 
 case class PDFontInfo(
@@ -39,11 +36,11 @@ case class PDCharStyle(
   rotation: Float
 )
 
-case class PDChar(content: String, bb: Rectangle, glyphBB: Option[Rectangle], style: PDCharStyle) extends TextSegment
+case class PDChar(content: String, bb: RectangleOTL, glyphBB: Option[RectangleOTL], style: PDCharStyle) extends TextSegment
 
-case class PDWord(content: String, bb: Rectangle, chars: List[PDChar]) extends TextSegment
+case class PDWord(content: String, bb: RectangleOTL, chars: List[PDChar]) extends TextSegment
 
-case class PDTextLine(content: String, bb: Rectangle, tWords: List[PDWord]) extends TextSegment
+case class PDTextLine(content: String, bb: RectangleOTL, tWords: List[PDWord]) extends TextSegment
 
-case class PDParagraph(content: String, bb: Rectangle, tLines: List[PDTextLine]) extends TextSegment
+case class PDParagraph(content: String, bb: RectangleOTL, tLines: List[PDTextLine]) extends TextSegment
 

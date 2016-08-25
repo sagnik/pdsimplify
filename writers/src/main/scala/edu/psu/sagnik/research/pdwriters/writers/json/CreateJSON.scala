@@ -2,6 +2,7 @@ package edu.psu.sagnik.research.pdwriters.writers.json
 
 import java.awt.geom.Point2D
 
+import edu.psu.sagnik.research.data.RectangleOTL
 import edu.psu.sagnik.research.pdsimplify.model.PDDocumentSimple
 import edu.psu.sagnik.research.pdsimplify.model.Rectangle
 import edu.psu.sagnik.research.pdsimplify.path.model.PDLine
@@ -18,7 +19,7 @@ object CreateJSON {
 
   def precReduce(point: Point2D.Float): List[Float] = List(precReduce(point.x), precReduce(point.y))
 
-  def precReduce(r: Rectangle): List[Float] = List(precReduce(r.x1), precReduce(r.y1), precReduce(r.x2), precReduce(r.x1))
+  def precReduce(r: RectangleOTL): List[Float] = List(precReduce(r.xTopLeft), precReduce(r.yTopLeft), precReduce(r.widthRight), precReduce(r.heightDown))
 
   case class PathStyle(
     fill: Option[String],

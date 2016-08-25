@@ -2,7 +2,7 @@ package edu.psu.sagnik.research.pdsimplify.text.impl
 
 import java.awt.geom.{ AffineTransform, GeneralPath, Rectangle2D }
 
-import edu.psu.sagnik.research.pdsimplify.model.Rectangle
+import edu.psu.sagnik.research.data.RectangleOTL
 import org.apache.pdfbox.pdmodel.PDPage
 import org.apache.pdfbox.pdmodel.common.PDRectangle
 import org.apache.pdfbox.pdmodel.font.{ PDCIDFontType2, PDSimpleFont, PDType0Font, _ }
@@ -13,19 +13,12 @@ import org.apache.pdfbox.text.TextPosition
  */
 object TextPositionBB {
 
-  def pageHeightAdjust(r: Rectangle, page: PDPage) = Rectangle(
-    r.x1,
-    page.getBBox.getHeight - r.y1,
-    r.x2,
-    page.getBBox.getHeight - r.y2
+  def approximate(tP: TextPosition, page: PDPage) = RectangleOTL(
+    xTopLeft = tP.getXDirAdj, // text can be rotated, which will change the x,y coordinates and bounding boxes
+    yTopLeft = tP.getYDirAdj,
+    widthRight = tP.getWidthDirAdj,
+    heightDown = tP.getHeightDir //(tP.getYDirAdj - tP.getHeightDir)+tP.getHeightDir
   )
-
-  def approximate(tP: TextPosition, page: PDPage) = pageHeightAdjust(Rectangle(
-    tP.getXDirAdj, // text can be rotated, which will change the x,y coordinates and bounding boxes
-    tP.getYDirAdj - tP.getHeightDir,
-    tP.getXDirAdj + tP.getWidthDirAdj,
-    tP.getYDirAdj //(tP.getYDirAdj - tP.getHeightDir)+tP.getHeightDir
-  ), page)
 
   def pageBasedAffineTransforms(pdPage: PDPage): (AffineTransform, AffineTransform) = {
     val flipAT = new AffineTransform
@@ -51,7 +44,7 @@ object TextPositionBB {
 
   //see method writeString @org.apache.pdfbox.examples.util.DrawPrintTextLocations
   //TODO: check correctness
-  def fontBased(tP: TextPosition, pdPage: PDPage): Rectangle = {
+  def fontBased(tP: TextPosition, pdPage: PDPage): RectangleOTL = {
     val font = tP.getFont
     val bbox = font.getBoundingBox
 
@@ -71,17 +64,15 @@ object TextPositionBB {
     }
 
     val s = rotateAT.createTransformedShape(flipAT.createTransformedShape(at.createTransformedShape(rect)))
-    pageHeightAdjust(
-      Rectangle(
-        s.getBounds2D.getMinX.toFloat,
-        s.getBounds2D.getMinY.toFloat,
-        s.getBounds2D.getMaxX.toFloat,
-        s.getBounds2D.getMaxY.toFloat
-      ), pdPage
+    RectangleOTL(
+      xTopLeft = s.getBounds2D.getMinX.toFloat,
+      yTopLeft = s.getBounds2D.getMinY.toFloat,
+      widthRight = s.getBounds2D.getMaxX.toFloat - s.getBounds2D.getMinX.toFloat,
+      heightDown = s.getBounds2D.getMaxY.toFloat - s.getBounds2D.getMinY.toFloat
     )
   }
 
-  def glyphBased(t: TextPosition, page: PDPage): Option[Rectangle] = {
+  def glyphBased(t: TextPosition, page: PDPage): Option[RectangleOTL] = {
 
     val (flipAT, rotateAT) = pageBasedAffineTransforms(page)
     val at = t.getTextMatrix.createAffineTransform
@@ -122,17 +113,18 @@ object TextPositionBB {
 
     if (afterPageTransformation.isEmpty)
       None
-    else
+    else {
+      val xTopLeft = afterPageTransformation.map(_.getBounds.x).min
+      val yTopLeft = afterPageTransformation.map(_.getBounds.y).min
       Some(
-        pageHeightAdjust(
-          Rectangle(
-            afterPageTransformation.map(_.getBounds.x).min,
-            afterPageTransformation.map(_.getBounds.y).min,
-            afterPageTransformation.map(a => a.getBounds.x + a.getBounds.width).max,
-            afterPageTransformation.map(a => a.getBounds.y + a.getBounds.height).max
-          ), page
+        RectangleOTL(
+          xTopLeft = xTopLeft,
+          yTopLeft = yTopLeft,
+          widthRight = afterPageTransformation.map(a => a.getBounds.x + a.getBounds.width).max - xTopLeft,
+          heightDown = afterPageTransformation.map(a => a.getBounds.y + a.getBounds.height).max - yTopLeft
         )
       )
+    }
 
   }
 

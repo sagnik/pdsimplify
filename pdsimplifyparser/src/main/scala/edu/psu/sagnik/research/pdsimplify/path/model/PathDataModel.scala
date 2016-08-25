@@ -2,8 +2,7 @@ package edu.psu.sagnik.research.pdsimplify.path.model
 
 import java.awt.geom.Point2D
 
-import edu.psu.sagnik.research.pdsimplify.model.Rectangle
-import org.apache.pdfbox.util.Matrix
+import edu.psu.sagnik.research.data.RectangleOTL
 
 /**
  * Created by schoudhury on 6/15/16.
@@ -32,11 +31,11 @@ paint the path or to use it as a clipping boundary.
 trait PDSegment {
   def startPoint: Point2D.Float
   def endPoint: Point2D.Float
-  def bb: Rectangle
+  def bb: RectangleOTL
 }
 
-case class PDLine(startPoint: Point2D.Float, endPoint: Point2D.Float, bb: Rectangle) extends PDSegment
-case class PDCurve(startPoint: Point2D.Float, endPoint: Point2D.Float, controlPoint1: Point2D.Float, controlPoint2: Point2D.Float, bb: Rectangle) extends PDSegment
+case class PDLine(startPoint: Point2D.Float, endPoint: Point2D.Float, bb: RectangleOTL) extends PDSegment
+case class PDCurve(startPoint: Point2D.Float, endPoint: Point2D.Float, controlPoint1: Point2D.Float, controlPoint2: Point2D.Float, bb: RectangleOTL) extends PDSegment
 
 //a PDShape is a subpath actually
 case class PDShape(segments: List[PDSegment], fromReCommand: Boolean)

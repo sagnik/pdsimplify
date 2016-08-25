@@ -3,11 +3,11 @@ package edu.psu.sagnik.research.pdsimplify.impl
 import java.io.File
 
 import edu.psu.sagnik.research.data.RectangleOTL
-import edu.psu.sagnik.research.pdsimplify.model.{PDDocumentSimple, PDPageSimple}
+import edu.psu.sagnik.research.pdsimplify.model.{ PDDocumentSimple, PDPageSimple }
 import edu.psu.sagnik.research.pdsimplify.path.impl.ProcessPaths
 import edu.psu.sagnik.research.pdsimplify.raster.impl.ProcessRaster
 import edu.psu.sagnik.research.pdsimplify.text.impl.ProcessText
-import org.apache.pdfbox.pdmodel.{PDDocument, PDPage}
+import org.apache.pdfbox.pdmodel.{ PDDocument, PDPage }
 
 import scala.util.Try
 
@@ -34,10 +34,10 @@ object ProcessDocument {
       rasters = rasters,
       bb =
         RectangleOTL(
-          xTopLeft=page.getBBox.getLowerLeftX,
-          yTopLeft=page.getBBox.getUpperRightY,
-          widthRight=page.getBBox.getWidth,
-          heightDown=page.getBBox.getHeight
+          xTopLeft = page.getBBox.getLowerLeftX,
+          yTopLeft = page.getBBox.getUpperRightY,
+          widthRight = page.getBBox.getWidth,
+          heightDown = page.getBBox.getHeight
         )
     )
   }

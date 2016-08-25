@@ -4,8 +4,6 @@ import java.io.{ ByteArrayOutputStream, IOException, OutputStreamWriter }
 import java.util
 import java.util.logging.{ Level, Logger }
 
-import edu.psu.sagnik.research.pdsimplify.model.Rectangle
-import edu.psu.sagnik.research.pdsimplify.path.impl.CreatePathStyle
 import edu.psu.sagnik.research.pdsimplify.text.model._
 import org.apache.pdfbox.pdmodel.{ PDDocument, PDPage }
 import org.apache.pdfbox.text.{ PDFTextStripper, TextPosition }

@@ -3,10 +3,10 @@ package edu.psu.sagnik.research.pdwriters.impl
 import java.awt.Color
 import java.io.File
 
-import edu.psu.sagnik.research.pdsimplify.model.Rectangle
 import org.apache.pdfbox.pdmodel.PDDocument
-import java.util.logging.{ Level, Logger }
+import java.util.logging.{Level, Logger}
 
+import edu.psu.sagnik.research.data.RectangleOTL
 import edu.psu.sagnik.research.pdsimplify.impl.ProcessDocument
 import edu.psu.sagnik.research.pdsimplify.path.model.PDPath
 import edu.psu.sagnik.research.pdsimplify.raster.model.PDRasterImage
@@ -14,7 +14,7 @@ import edu.psu.sagnik.research.pdsimplify.text.model.PDParagraph
 import edu.psu.sagnik.research.pdwriters.writers.image.CreateMarkedPNG
 import edu.psu.sagnik.research.pdwriters.writers.pdf.CreateMarkedPDF
 
-import scala.util.{ Failure, Success }
+import scala.util.{Failure, Success}
 
 /**
  * Created by schoudhury on 6/27/16.
@@ -24,7 +24,7 @@ object ShowResults {
   lazy val logger = Logger.getLogger("pdwriters.writer.ShowResults")
   logger.setLevel(Level.ALL)
 
-  def printExtractionResult(pdLoc: String, pageNum: Int, bbs: List[Rectangle], c: Color, qualifier: String) = {
+  def printExtractionResult(pdLoc: String, pageNum: Int, bbs: List[RectangleOTL], c: Color, qualifier: String) = {
     val document = PDDocument.load(new File(pdLoc))
     val page = document.getPage(pageNum)
     CreateMarkedPDF(pdLoc, document, pageNum, page, bbs, c, qualifier)

@@ -2,10 +2,10 @@ package edu.psu.sagnik.research.pdwriters.writers.pdf
 
 import java.awt.Color
 import java.io.IOException
-import java.util.logging.{ Level, Logger }
+import java.util.logging.{Level, Logger}
 
-import edu.psu.sagnik.research.pdsimplify.model.Rectangle
-import org.apache.pdfbox.pdmodel.{ PDDocument, PDPage, PDPageContentStream }
+import edu.psu.sagnik.research.data.RectangleOTL
+import org.apache.pdfbox.pdmodel.{PDDocument, PDPage, PDPageContentStream}
 import org.apache.pdfbox.util.Matrix
 
 /**
@@ -18,8 +18,13 @@ object CreateMarkedPDF {
   logger.setLevel(Level.ALL)
 
   @throws[IOException]
-  private def drawRect(content: PDPageContentStream, color: Color, rect: Rectangle, page: PDPage, fill: Boolean) {
-    content.addRect(rect.x1 + page.getCropBox.getLowerLeftX, rect.y2 + page.getCropBox.getLowerLeftY, rect.x2 - rect.x1, rect.y1 - rect.y2)
+  private def drawRect(content: PDPageContentStream, color: Color, rect: RectangleOTL, page: PDPage, fill: Boolean) {
+    content.addRect(
+      rect.xTopLeft + page.getCropBox.getLowerLeftX,
+      page.getCropBox.getHeight - (rect.yTopLeft + page.getCropBox.getLowerLeftY),
+      rect.x2 - rect.x1,
+      rect.y1 - rect.y2
+    )
     //remember the addRect is drawing a rectangle with x,y at bottom left. Also, we adjusted the rect for cropbox before. Since we are not changing the
     //content stream, that adjustment has to be _re_adjusted.
     if (fill) {

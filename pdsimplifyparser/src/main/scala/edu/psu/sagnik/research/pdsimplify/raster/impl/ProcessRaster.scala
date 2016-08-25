@@ -6,7 +6,7 @@ import java.io.{ ByteArrayOutputStream, IOException }
 import javax.imageio.ImageIO
 import javax.xml.bind.DatatypeConverter
 
-import edu.psu.sagnik.research.pdsimplify.model.Rectangle
+import edu.psu.sagnik.research.data.RectangleOTL
 import edu.psu.sagnik.research.pdsimplify.raster.model.PDRasterImage
 import org.apache.pdfbox.contentstream.PDFGraphicsStreamEngine
 import org.apache.pdfbox.cos.COSName
@@ -69,15 +69,19 @@ class ProcessRaster(page: PDPage) extends PDFGraphicsStreamEngine(page: PDPage) 
   }
 
   @Override @throws[IOException]
-  def drawImage(pdImage: PDImage): Unit = rasterImages = rasterImages :+ PDRasterImage(
-    image = pdImage.getImage,
-    imageDataString = DatatypeConverter.printBase64Binary(getByteArray(pdImage.getImage)),
-    bb = Rectangle(
-      getCTM.getTranslateX - page.getCropBox.getLowerLeftX,
-      getCTM.getTranslateY - page.getCropBox.getLowerLeftY,
-      getCTM.getTranslateX + getCTM.getScaleX,
-      getCTM.getTranslateY + getCTM.getScaleY
+  def drawImage(pdImage: PDImage): Unit = rasterImages = {
+    val image = pdImage.getImage
+    rasterImages :+ PDRasterImage(
+      image = image,
+      imageDataString = DatatypeConverter.printBase64Binary(getByteArray(image)),
+
+      bb = RectangleOTL(
+        xTopLeft = getCTM.getTranslateX - page.getCropBox.getLowerLeftX,
+        yTopLeft = getCTM.getTranslateY - page.getCropBox.getLowerLeftY,
+        widthRight = getCTM.getScaleX,
+        heightDown = getCTM.getScaleY
+      )
     )
-  )
+  }
 
 }
