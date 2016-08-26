@@ -1,11 +1,11 @@
 // shared settings across root & all subprojects
 
 version in ThisBuild := {
-  val major = 0
+  val major = 1
   val minor = 0
-  val patch = 11
+  val patch = 0
   s"$major.$minor.$patch"
-} //page size now conforms to our rectangle structure.
+}
 
 scalaVersion in ThisBuild := "2.11.8"
 

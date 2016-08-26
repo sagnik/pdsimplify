@@ -21,7 +21,7 @@ object CreateMarkedPDF {
   private def drawRect(content: PDPageContentStream, color: Color, rect: RectangleOTL, page: PDPage, fill: Boolean) {
     content.addRect(
       rect.xTopLeft + page.getCropBox.getLowerLeftX,
-      page.getCropBox.getHeight - (rect.yTopLeft + page.getCropBox.getLowerLeftY) - rect.heightDown,
+      page.getCropBox.getHeight - rect.yTopLeft - rect.heightDown + page.getCropBox.getLowerLeftY,
       rect.widthRight,
       rect.heightDown
     )
@@ -45,6 +45,15 @@ object CreateMarkedPDF {
     document.save(docLoc.substring(0, docLoc.length - 4) + "-page-" + pageNum + "-" + tElemType + ".pdf")
     println(s"[created]: ${docLoc.substring(0, docLoc.length - 4) + "-page-" + pageNum + "-" + tElemType + ".pdf"}")
     document.close()
+  }
+
+  def rectMarkedContent(document: PDDocument, page: PDPage, bbs: List[RectangleOTL], color: Color): PDDocument = {
+    bbs.foreach(bb => {
+      val content = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, false)
+      drawRect(content, color, bb, page, fill = false)
+      content.close()
+    })
+    document
   }
 
 }
