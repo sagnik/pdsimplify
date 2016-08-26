@@ -1,25 +1,28 @@
 package edu.psu.sagnik.research.pdsimplify.text.impl
 
-import edu.psu.sagnik.research.pdsimplify.model.{Rectangle}
+import edu.psu.sagnik.research.data.RectangleOTL
 import edu.psu.sagnik.research.pdsimplify.text.model._
 
 /**
-  * Created by schoudhury on 6/27/16.
-  */
+ * Created by schoudhury on 6/27/16.
+ */
 object CalculateBB {
 
-  def apply(texts:List[TextSegment]):Option[Rectangle]=
-    if (texts.nonEmpty)
+  def apply(texts: List[TextSegment]): Option[RectangleOTL] =
+    if (texts.nonEmpty) {
+      val xTopLeft = texts.map(t => t.bb.xTopLeft).min
+      val yTopLeft = texts.map(t => t.bb.yTopLeft).min
+      val width = texts.map(t => (t.bb.xTopLeft + t.bb.widthRight)).max - xTopLeft
+      val height = texts.map(t => (t.bb.yTopLeft + t.bb.heightDown)).max - yTopLeft
       Some(
-        Rectangle(
-          texts.map(x=>x.bb.x1).min,
-          texts.map(x=>x.bb.y1).max, //PDF rectangle, y1 > y2.
-          texts.map(x=>x.bb.x2).max,
-          texts.map(x=>x.bb.y2).min
+        RectangleOTL(
+          xTopLeft = xTopLeft,
+          yTopLeft = yTopLeft,
+          widthRight = width,
+          heightDown = height
         )
       )
-    else
+    } else
       None
-
 
 }

@@ -1,0 +1,12 @@
+{
+    "type": "record",
+    "namespace": "edu.psu.sagnik.research.data",
+    "name": "RectangleOTL",
+    "doc:": "A rectangle, specified by its upper-left corner, width and height. OTL => Origin is top left. height (heightDown) grows downward. width (widthRight) grows rightward",
+    "fields": [
+      { "name": "xTopLeft",   "type": "float", "doc": "Upper-left x coordinate"  },
+      { "name": "yTopLeft",   "type": "float", "doc": "Upper-left y coordinate"  },
+      { "name": "heightDown", "type": "float", "doc": "height (positive real) that grows downward" },
+      { "name": "widthRight", "type": "float", "doc": "width (positive real) that grows rightward" }
+    ]
+}

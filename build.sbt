@@ -1,11 +1,11 @@
 // shared settings across root & all subprojects
 
 version in ThisBuild := {
-  val major = 0
+  val major = 1
   val minor = 0
-  val patch = 12
+  val patch = 0
   s"$major.$minor.$patch"
-} //fixed timing due to raster image
+}
 
 scalaVersion in ThisBuild := "2.11.8"
 
@@ -18,13 +18,19 @@ name := "pdsimplify"
 lazy val root = project
   .in(file("."))
   .aggregate(
-    pdsimplifyparser, 
+    rectangle,
+    pdsimplifyparser,
     writers
  )
   .settings(publishArtifact := false)
 
+lazy val rectangle = project
+  .in(file("rectangle"))
+  .settings(publishArtifact := false)
+
 lazy val pdsimplifyparser = project
   .in(file("pdsimplifyparser"))
+  .dependsOn(rectangle)
   .settings(publishArtifact := true)
 
 lazy val writers = project

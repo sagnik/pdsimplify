@@ -3,13 +3,13 @@ package edu.psu.sagnik.research.pdwriters.writers.svg
 import edu.psu.sagnik.research.pdsimplify.text.model.PDChar
 
 /**
-  * Created by schoudhury on 6/30/16.
-  */
+ * Created by schoudhury on 6/30/16.
+ */
 object TextHelper {
 
-  def italicNormal(f:Boolean)=if (f) "italic" else "normal"
+  def italicNormal(f: Boolean) = if (f) "italic" else "normal"
 
-  def getStyleString(c:PDChar):String="style=\""+
+  def getStyleString(c: PDChar): String = "style=\"" +
     "font-variant:" +
     "normal" + ";" +
     "font-style:" +
@@ -33,23 +33,23 @@ object TextHelper {
     c.style.stroke +
     "\""
 
-  def getLocationString(c:PDChar,h:Float):String="y=\"" +
-    (c.bb.y2) +
+  def getLocationString(c: PDChar, h: Float): String = "y=\"" +
+    (c.bb.yTopLeft) +
     "\" x=\"" +
-    c.bb.x1 +
+    c.bb.xTopLeft +
     "\">"
 
-  def getTransformString(c:PDChar):String= "transform=\"rotate("+c.style.rotation.toString+")\""
+  def getTransformString(c: PDChar): String = "transform=\"rotate(" + c.style.rotation.toString + ")\""
 
-  def replaceSpecialChars(c:String)={
+  def replaceSpecialChars(c: String) = {
     //see http://stackoverflow.com/questions/4237625/removing-invalid-xml-characters-from-a-string-in-java
     val xml10pattern = "[^" + "\u0009\r\n" + "\u0020-\uD7FF" + "\uE000-\uFFFD" + "\ud800\udc00-\udbff\udfff" + "]"
     c.replaceAll(xml10pattern, "")
-      .replaceAll("&","&amp;")
-      .replaceAll("<","&lt;")
-      .replaceAll(">","&gt;")
-      .replaceAll("\'","&apos;")
-      .replaceAll("\"","&quot;")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll("\'", "&apos;")
+      .replaceAll("\"", "&quot;")
   }
 
 }
