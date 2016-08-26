@@ -2,10 +2,10 @@ package edu.psu.sagnik.research.pdwriters.writers.pdf
 
 import java.awt.Color
 import java.io.IOException
-import java.util.logging.{Level, Logger}
+import java.util.logging.{ Level, Logger }
 
 import edu.psu.sagnik.research.data.RectangleOTL
-import org.apache.pdfbox.pdmodel.{PDDocument, PDPage, PDPageContentStream}
+import org.apache.pdfbox.pdmodel.{ PDDocument, PDPage, PDPageContentStream }
 import org.apache.pdfbox.util.Matrix
 
 /**
@@ -21,9 +21,9 @@ object CreateMarkedPDF {
   private def drawRect(content: PDPageContentStream, color: Color, rect: RectangleOTL, page: PDPage, fill: Boolean) {
     content.addRect(
       rect.xTopLeft + page.getCropBox.getLowerLeftX,
-      page.getCropBox.getHeight - (rect.yTopLeft + page.getCropBox.getLowerLeftY),
-      rect.x2 - rect.x1,
-      rect.y1 - rect.y2
+      page.getCropBox.getHeight - (rect.yTopLeft + page.getCropBox.getLowerLeftY) - rect.heightDown,
+      rect.widthRight,
+      rect.heightDown
     )
     //remember the addRect is drawing a rectangle with x,y at bottom left. Also, we adjusted the rect for cropbox before. Since we are not changing the
     //content stream, that adjustment has to be _re_adjusted.
@@ -36,7 +36,7 @@ object CreateMarkedPDF {
     }
   }
 
-  def apply(docLoc: String, document: PDDocument, pageNum: Int, page: PDPage, bbs: List[Rectangle], color: Color, tElemType: String): Unit = {
+  def apply(docLoc: String, document: PDDocument, pageNum: Int, page: PDPage, bbs: List[RectangleOTL], color: Color, tElemType: String): Unit = {
     bbs.foreach(bb => {
       val content = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, false)
       drawRect(content, color, bb, page, fill = false)

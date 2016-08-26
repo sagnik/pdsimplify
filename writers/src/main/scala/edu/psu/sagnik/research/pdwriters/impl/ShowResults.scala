@@ -4,17 +4,14 @@ import java.awt.Color
 import java.io.File
 
 import org.apache.pdfbox.pdmodel.PDDocument
-import java.util.logging.{Level, Logger}
+import java.util.logging.{ Level, Logger }
 
 import edu.psu.sagnik.research.data.RectangleOTL
 import edu.psu.sagnik.research.pdsimplify.impl.ProcessDocument
-import edu.psu.sagnik.research.pdsimplify.path.model.PDPath
-import edu.psu.sagnik.research.pdsimplify.raster.model.PDRasterImage
-import edu.psu.sagnik.research.pdsimplify.text.model.PDParagraph
 import edu.psu.sagnik.research.pdwriters.writers.image.CreateMarkedPNG
 import edu.psu.sagnik.research.pdwriters.writers.pdf.CreateMarkedPDF
 
-import scala.util.{Failure, Success}
+import scala.util.{ Failure, Success }
 
 /**
  * Created by schoudhury on 6/27/16.
@@ -27,14 +24,14 @@ object ShowResults {
   def printExtractionResult(pdLoc: String, pageNum: Int, bbs: List[RectangleOTL], c: Color, qualifier: String) = {
     val document = PDDocument.load(new File(pdLoc))
     val page = document.getPage(pageNum)
-    CreateMarkedPDF(pdLoc, document, pageNum, page, bbs, c, qualifier)
+    CreateMarkedPNG(pdLoc, document, pageNum, page, bbs, c, qualifier)
     logger.fine(s"created ${qualifier.substring(0, qualifier.length - 1)} marked PDF")
   }
 
   def main(args: Array[String]): Unit = {
-    val DEFAULT_LOC = "/Users/schoudhury/codes/res-doc-sci/res-app-cmd/src/test/resources/008baad5-3fdb-4aea-9311-3ef7499e3f1f.pdf"
+    val DEFAULT_LOC = "src/test/resources/test1.pdf"
     //"/Users/schoudhury/hassan/C10-2042.pdf"
-    val DEFAULT_PAGE_NUM = 3
+    val DEFAULT_PAGE_NUM = 5
 
     val pdLoc = if (args.length > 1) args(0) else DEFAULT_LOC
     val pageNum = if (args.length == 2) args(1).toInt else DEFAULT_PAGE_NUM

@@ -11,7 +11,6 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImage
 import org.apache.pdfbox.util.Matrix
 
 import java.util.logging.{ Level, Logger }
-import Level.{ INFO, FINE }
 
 /**
  * Created by schoudhury on 6/22/16.
@@ -48,10 +47,10 @@ class ProcessPaths(page: PDPage) extends PDFGraphicsStreamEngine(page: PDPage) {
     currentSubPath = Some(
       PDShape(
         segments = List(
-          PDLine(fp(p0), fp(p1), BB.Line(fp(p0), fp(p1))),
-          PDLine(fp(p1), fp(p2), BB.Line(fp(p1), fp(p2))),
-          PDLine(fp(p2), fp(p3), BB.Line(fp(p2), fp(p3))),
-          PDLine(fp(p3), fp(p0), BB.Line(fp(p3), fp(p0)))
+          PDLine(fp(p0), fp(p1), BB.Line(fp(p0), fp(p1), page.getBBox.getHeight)),
+          PDLine(fp(p1), fp(p2), BB.Line(fp(p1), fp(p2), page.getBBox.getHeight)),
+          PDLine(fp(p2), fp(p3), BB.Line(fp(p2), fp(p3), page.getBBox.getHeight)),
+          PDLine(fp(p3), fp(p0), BB.Line(fp(p3), fp(p0), page.getBBox.getHeight))
         ),
         fromReCommand = true
       )
@@ -111,13 +110,13 @@ class ProcessPaths(page: PDPage) extends PDFGraphicsStreamEngine(page: PDPage) {
       case Some(csp) => currentSubPath = Some(
         csp.copy(
           segments = csp.segments :+
-          PDLine(currentPoint, fp(new Point2D.Float(x, y)), BB.Line(currentPoint, fp(new Point2D.Float(x, y))))
+          PDLine(currentPoint, fp(new Point2D.Float(x, y)), BB.Line(currentPoint, fp(new Point2D.Float(x, y)), page.getBBox.getHeight))
         )
       )
       case _ => currentSubPath = Some( //current sub path is empty. We need to start a new PDShape i.e. subpath
         PDShape(
           segments = List(
-            PDLine(currentPoint, fp(new Point2D.Float(x, y)), BB.Line(currentPoint, fp(new Point2D.Float(x, y))))
+            PDLine(currentPoint, fp(new Point2D.Float(x, y)), BB.Line(currentPoint, fp(new Point2D.Float(x, y)), page.getBBox.getHeight))
           ),
           fromReCommand = false
         )
@@ -137,7 +136,7 @@ class ProcessPaths(page: PDPage) extends PDFGraphicsStreamEngine(page: PDPage) {
             endPoint = fp(new Point2D.Float(x3, y3)),
             controlPoint1 = fp(new Point2D.Float(x1, y1)),
             controlPoint2 = fp(new Point2D.Float(x2, y2)),
-            BB.Curve(currentPoint, fp(new Point2D.Float(x3, y3)), fp(new Point2D.Float(x1, y1)), fp(new Point2D.Float(x2, y2)))
+            BB.Curve(currentPoint, fp(new Point2D.Float(x3, y3)), fp(new Point2D.Float(x1, y1)), fp(new Point2D.Float(x2, y2)), page.getBBox.getHeight)
           )
         )
       )
@@ -149,7 +148,7 @@ class ProcessPaths(page: PDPage) extends PDFGraphicsStreamEngine(page: PDPage) {
               endPoint = fp(new Point2D.Float(x3, y3)),
               controlPoint1 = fp(new Point2D.Float(x1, y1)),
               controlPoint2 = fp(new Point2D.Float(x2, y2)),
-              BB.Curve(currentPoint, fp(new Point2D.Float(x3, y3)), fp(new Point2D.Float(x1, y1)), fp(new Point2D.Float(x2, y2)))
+              BB.Curve(currentPoint, fp(new Point2D.Float(x3, y3)), fp(new Point2D.Float(x1, y1)), fp(new Point2D.Float(x2, y2)), page.getBBox.getHeight)
             )
           ),
           fromReCommand = false
@@ -172,16 +171,17 @@ class ProcessPaths(page: PDPage) extends PDFGraphicsStreamEngine(page: PDPage) {
         val startPoint = csp.segments.head.startPoint
         currentSubPath = Some(
           csp.copy(
-            segments = csp.segments :+ PDLine(currentPoint, startPoint, BB.Line(currentPoint, startPoint))
+            segments = csp.segments :+ PDLine(currentPoint, startPoint, BB.Line(currentPoint, startPoint, page.getBBox.getHeight))
           )
         )
         currentPoint = startPoint
         subPathComplete()
 
-      case _ => {
+      case _ =>
         logger.warning("A path encountered a close operator before it even started. " +
-          "It will henceforth be known as Rickon Stark Blvd."); subPathComplete()
-      } //should never reach here}
+          "It will henceforth be known as Rickon Stark Blvd.")
+        subPathComplete()
+      //should never reach here}
 
     }
 

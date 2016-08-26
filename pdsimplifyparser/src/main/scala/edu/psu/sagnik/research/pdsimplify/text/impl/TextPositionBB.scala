@@ -15,7 +15,7 @@ object TextPositionBB {
 
   def approximate(tP: TextPosition, page: PDPage) = RectangleOTL(
     xTopLeft = tP.getXDirAdj, // text can be rotated, which will change the x,y coordinates and bounding boxes
-    yTopLeft = tP.getYDirAdj,
+    yTopLeft = tP.getYDirAdj - tP.getHeightDir,
     widthRight = tP.getWidthDirAdj,
     heightDown = tP.getHeightDir //(tP.getYDirAdj - tP.getHeightDir)+tP.getHeightDir
   )
@@ -64,11 +64,12 @@ object TextPositionBB {
     }
 
     val s = rotateAT.createTransformedShape(flipAT.createTransformedShape(at.createTransformedShape(rect)))
+    val heightDown = s.getBounds2D.getMaxY.toFloat - s.getBounds2D.getMinY.toFloat
     RectangleOTL(
       xTopLeft = s.getBounds2D.getMinX.toFloat,
-      yTopLeft = s.getBounds2D.getMinY.toFloat,
+      yTopLeft = s.getBounds2D.getMinY.toFloat - heightDown,
       widthRight = s.getBounds2D.getMaxX.toFloat - s.getBounds2D.getMinX.toFloat,
-      heightDown = s.getBounds2D.getMaxY.toFloat - s.getBounds2D.getMinY.toFloat
+      heightDown = heightDown
     )
   }
 
@@ -116,12 +117,13 @@ object TextPositionBB {
     else {
       val xTopLeft = afterPageTransformation.map(_.getBounds.x).min
       val yTopLeft = afterPageTransformation.map(_.getBounds.y).min
+      val heightDown = afterPageTransformation.map(a => a.getBounds.y + a.getBounds.height).max - yTopLeft
       Some(
         RectangleOTL(
           xTopLeft = xTopLeft,
-          yTopLeft = yTopLeft,
+          yTopLeft = yTopLeft - heightDown,
           widthRight = afterPageTransformation.map(a => a.getBounds.x + a.getBounds.width).max - xTopLeft,
-          heightDown = afterPageTransformation.map(a => a.getBounds.y + a.getBounds.height).max - yTopLeft
+          heightDown = heightDown
         )
       )
     }

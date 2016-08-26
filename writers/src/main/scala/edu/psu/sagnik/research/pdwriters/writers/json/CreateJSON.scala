@@ -4,7 +4,6 @@ import java.awt.geom.Point2D
 
 import edu.psu.sagnik.research.data.RectangleOTL
 import edu.psu.sagnik.research.pdsimplify.model.PDDocumentSimple
-import edu.psu.sagnik.research.pdsimplify.model.Rectangle
 import edu.psu.sagnik.research.pdsimplify.path.model.PDLine
 import org.json4s.JsonDSL._
 import org.json4s.JsonDSL._

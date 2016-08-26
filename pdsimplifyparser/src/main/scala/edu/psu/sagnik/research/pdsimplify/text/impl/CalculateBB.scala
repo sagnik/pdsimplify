@@ -10,10 +10,10 @@ object CalculateBB {
 
   def apply(texts: List[TextSegment]): Option[RectangleOTL] =
     if (texts.nonEmpty) {
-      val xTopLeft = texts.map(x => x.bb.xTopLeft).min
-      val yTopLeft = texts.map(x => x.bb.yTopLeft).min
-      val width = texts.map(t => t.bb.xTopLeft + t.bb.widthRight).max - xTopLeft
-      val height = texts.map(t => t.bb.yTopLeft + t.bb.heightDown).max - xTopLeft
+      val xTopLeft = texts.map(t => t.bb.xTopLeft).min
+      val yTopLeft = texts.map(t => t.bb.yTopLeft).min
+      val width = texts.map(t => (t.bb.xTopLeft + t.bb.widthRight)).max - xTopLeft
+      val height = texts.map(t => (t.bb.yTopLeft + t.bb.heightDown)).max - yTopLeft
       Some(
         RectangleOTL(
           xTopLeft = xTopLeft,

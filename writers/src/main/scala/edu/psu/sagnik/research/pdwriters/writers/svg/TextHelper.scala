@@ -34,9 +34,9 @@ object TextHelper {
     "\""
 
   def getLocationString(c: PDChar, h: Float): String = "y=\"" +
-    (c.bb.y2) +
+    (c.bb.yTopLeft) +
     "\" x=\"" +
-    c.bb.x1 +
+    c.bb.xTopLeft +
     "\">"
 
   def getTransformString(c: PDChar): String = "transform=\"rotate(" + c.style.rotation.toString + ")\""

@@ -77,7 +77,7 @@ class ProcessRaster(page: PDPage) extends PDFGraphicsStreamEngine(page: PDPage) 
 
       bb = RectangleOTL(
         xTopLeft = getCTM.getTranslateX - page.getCropBox.getLowerLeftX,
-        yTopLeft = getCTM.getTranslateY - page.getCropBox.getLowerLeftY,
+        yTopLeft = page.getBBox.getHeight - (getCTM.getTranslateY - page.getCropBox.getLowerLeftY) - getCTM.getScaleY,
         widthRight = getCTM.getScaleX,
         heightDown = getCTM.getScaleY
       )

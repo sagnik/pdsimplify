@@ -1,13 +1,13 @@
 package edu.psu.sagnik.research.pdwriters.writers.image
 
 import java.awt.geom.Rectangle2D
-import java.awt.{BasicStroke, Color}
-import java.io.{File}
-import java.util.logging.{Level, Logger}
+import java.awt.{ BasicStroke, Color }
+import java.io.{ File }
+import java.util.logging.{ Level, Logger }
 import javax.imageio.ImageIO
 
 import edu.psu.sagnik.research.data.RectangleOTL
-import org.apache.pdfbox.pdmodel.{PDDocument, PDPage}
+import org.apache.pdfbox.pdmodel.{ PDDocument, PDPage }
 import org.apache.pdfbox.rendering.PDFRenderer
 
 /**
@@ -31,7 +31,7 @@ object CreateMarkedPNG {
     val pH = page.getBBox.getHeight
 
     for (bb <- bbs) {
-      logger.info(s"[$tElemType] ${(bb.xTopLeft, bb.yTopLeft, bb.widthRight, bb.heightDown)}")
+      //logger.info(s"[$tElemType] ${(bb.xTopLeft, bb.yTopLeft, bb.widthRight, bb.heightDown)}")
       g2d.draw(new Rectangle2D.Float(bb.xTopLeft, bb.yTopLeft, bb.widthRight, bb.heightDown))
     }
 
