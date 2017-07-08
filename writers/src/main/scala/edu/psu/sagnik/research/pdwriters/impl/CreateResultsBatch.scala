@@ -1,6 +1,9 @@
 package edu.psu.sagnik.research.pdwriters.impl
 
+import java.io.{ BufferedWriter, FileWriter }
+
 import edu.psu.sagnik.research.pdsimplify.model.PDDocumentSimple
+import edu.psu.sagnik.research.pdwriters.writers.json.CreateTextLinesJSON
 
 /**
  * Created by szr163 on 8/26/16.
@@ -40,19 +43,27 @@ object CreateResultsBatch {
 
     var doc = document
 
-    doc = getExtractionResult(doc, pageNum, chars.map(_.bb), Color.BLUE)
+    //doc = getExtractionResult(doc, pageNum, chars.map(_.bb), Color.BLUE)
 
-    doc = getExtractionResult(doc, pageNum, words.map(_.bb), Color.GREEN)
+    //doc = getExtractionResult(doc, pageNum, words.map(_.bb), Color.GREEN)
 
     doc = getExtractionResult(doc, pageNum, lines.map(_.bb), Color.RED)
 
-    doc = getExtractionResult(doc, pageNum, paragraphs.map(_.bb), Color.CYAN)
+    //doc = getExtractionResult(doc, pageNum, paragraphs.map(_.bb), Color.CYAN)
 
-    doc = getExtractionResult(doc, pageNum, rasters.map(_.bb), Color.MAGENTA)
+    //doc = getExtractionResult(doc, pageNum, rasters.map(_.bb), Color.MAGENTA)
 
-    doc = getExtractionResult(doc, pageNum, segments.map(_.bb), Color.PINK)
+    //doc = getExtractionResult(doc, pageNum, segments.map(_.bb), Color.PINK)
 
     doc
+  }
+
+  def writeTextLinesJson(fileName: String, simplifiedDocument: PDDocumentSimple) = {
+    val file = new File(fileName)
+    val bw = new BufferedWriter(new FileWriter(file))
+    bw.write(CreateTextLinesJSON(simplifiedDocument))
+    println(s"JSON file written at: ${fileName}")
+    bw.close()
   }
 
   def getExtractionResult(document: PDDocument, pageNum: Int, bbs: List[RectangleOTL], c: Color): PDDocument = {
@@ -71,7 +82,8 @@ object CreateResultsBatch {
   }
 
   def main(args: Array[String]): Unit = {
-    val DEFAULT_LOC = "/home/szr163/Downloads/f706gsd1.pdf"
+    val DEFAULT_LOC = "/media/sagnik/OS_Install/data/pdfsamples/nuance/nuancepdf/img04192017_0002.pdf"
+    //"/home/szr163/Downloads/f706gsd1.pdf"
     //"/Users/schoudhury/hassan/C10-2042.pdf"
     val pdLoc = if (args.length > 1) args(0) else DEFAULT_LOC
 

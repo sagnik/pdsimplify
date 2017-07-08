@@ -24,12 +24,13 @@ object ShowResults {
   def printExtractionResult(pdLoc: String, pageNum: Int, bbs: List[RectangleOTL], c: Color, qualifier: String) = {
     val document = PDDocument.load(new File(pdLoc))
     val page = document.getPage(pageNum)
-    CreateMarkedPNG(pdLoc, document, pageNum, page, bbs, c, qualifier)
+    CreateMarkedPDF(pdLoc, document, pageNum, page, bbs, c, qualifier)
     logger.fine(s"created ${qualifier.substring(0, qualifier.length - 1)} marked PDF")
   }
 
   def main(args: Array[String]): Unit = {
-    val DEFAULT_LOC = "src/test/resources/test1.pdf"
+    val DEFAULT_LOC =
+      "src/test/resources/test1.pdf"
     //"/Users/schoudhury/hassan/C10-2042.pdf"
     val DEFAULT_PAGE_NUM = 5
 
